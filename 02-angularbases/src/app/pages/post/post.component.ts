@@ -8,12 +8,14 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class PostComponent implements OnInit {
 
+  postMessages: any[] = [];
+
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.dataService.getPost()
-    .subscribe(posts => {
-      console.log(posts);
+    .subscribe((posts: any[]) => {
+      this.postMessages = posts;
     });
   }
 
