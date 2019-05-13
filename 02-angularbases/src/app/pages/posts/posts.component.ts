@@ -16,4 +16,8 @@ export class PostsComponent implements OnInit {
     this.postMessages = this.dataService.getPost();
   }
 
+  listenClick( id: number ) {
+    console.log('Click en: ', id);
+  }
+
 }
