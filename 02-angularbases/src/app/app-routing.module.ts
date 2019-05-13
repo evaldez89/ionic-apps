@@ -18,8 +18,8 @@ const routes: Routes = [
     component: AboutComponent
   },
   {
-    path: 'post',
-    loadChildren: './pages/post/post.module#PostModule'
+    path: 'posts',
+    loadChildren: './pages/posts/posts.module#PostsModule'
   },
   {
     path: '**',

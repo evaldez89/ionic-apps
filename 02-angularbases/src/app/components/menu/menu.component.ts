@@ -22,7 +22,7 @@ export class MenuComponent implements OnInit {
     },
     {
       name: 'Posts',
-      path: '/post'
+      path: '/posts'
     }
   ];
 
