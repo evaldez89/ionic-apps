@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,10 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getPost(){
-    return this.http.get(this.postUrl);
+    return this.http.get(this.postUrl)
+    .pipe(tap(posts => {
+      console.log(posts);
+    })
+    );
   }
 }
