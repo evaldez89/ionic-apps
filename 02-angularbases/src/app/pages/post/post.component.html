@@ -1,7 +1,7 @@
 <h1>Posts</h1>
 
 <ul class="list-group">
-  <li *ngFor="let post of postMessages" class="list-group-item">
+  <li *ngFor="let post of postMessages | async" class="list-group-item">
     <h2>{{ post.title }}</h2>
     <p>{{ post.body }}</p>
   </li>
