@@ -13,9 +13,6 @@ export class DataService {
 
   getPost(){
     return this.http.get(this.postUrl)
-    .pipe(tap(posts => {
-      console.log(posts);
-    })
-    );
+    .pipe(tap(console.log));
   }
 }
