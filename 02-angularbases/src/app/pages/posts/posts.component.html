@@ -2,5 +2,6 @@
 
 <ul class="list-group">
   <app-post *ngFor="let post of postMessages | async"
-  [post]="post"></app-post>
+  [post]="post"
+  (clickPost)="listenClick( $event )"></app-post>
 </ul>
