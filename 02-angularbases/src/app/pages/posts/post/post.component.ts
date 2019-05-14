@@ -14,8 +14,7 @@ export class PostComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick(){
-    console.log(this.post.id)
+  onClick() {
+    console.log(this.post.id);
   }
-
 }

@@ -11,7 +11,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getPost(){
+  getPost() {
     return this.http.get(this.postUrl)
     .pipe(tap(console.log));
   }
