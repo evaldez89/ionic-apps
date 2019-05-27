@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActionSheetPage implements OnInit {
 
+  title = 'Action Sheet Page';
+
   constructor() { }
 
   ngOnInit() {
