@@ -31,7 +31,6 @@ export class AlertPage implements OnInit {
         },
         {
           text: 'Ok',
-          cssClass: 'secondary',
           handler: (blah) => {
             console.log('Boton OK');
           }
