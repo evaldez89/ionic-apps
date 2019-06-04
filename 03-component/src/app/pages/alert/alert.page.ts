@@ -15,6 +15,39 @@ export class AlertPage implements OnInit {
   ngOnInit() {
   }
 
+  async alertInput() {
+    const input = await this.alertCtrl.create({
+      header: 'Alert Input',
+      subHeader: 'This is the input example',
+      message: 'This is a good message',
+      inputs: [
+        {
+          name: 'txtName',
+          type: 'text',
+          placeholder: 'Insert your name',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Boton Cancelar');
+          }
+        },
+        {
+          text: 'Ok',
+          handler: ( data ) => {
+            if (data.txtName.length > 0) {
+              this.title = data.txtName;
+            }
+          }
+        },
+      ]
+    });
+    return await input.present();
+  }
+
   async presentAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Alert',
