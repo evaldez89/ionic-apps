@@ -15,12 +15,21 @@
 </ion-header>
 
 <ion-content>
+  <ion-chip *ngFor="let i of [1, 2, 3, 4]">
+    <ion-avatar>
+      <img src="/assets/foto_perfil.jpg" />
+    </ion-avatar>
+    <ion-label>Emmanuel</ion-label>
+  </ion-chip>
+
   <ion-list>
-    <ion-item *ngFor="let i of [1,2,3,4,5,6,7,8]">
+    <ion-item *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8]">
       <ion-avatar slot="start">
         <img src="/assets/foto_perfil.jpg" />
       </ion-avatar>
-      <ion-label>{{i}} - Emmanuel</ion-label>
+      <ion-label>Emmanuel
+        <ion-chip>{{ i }}</ion-chip>
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
