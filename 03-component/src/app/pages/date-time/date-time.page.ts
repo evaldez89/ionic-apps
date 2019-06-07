@@ -14,4 +14,8 @@ export class DateTimePage implements OnInit {
   ngOnInit() {
   }
 
+  dateChanged( event ) {
+    console.log(event);
+  }
+
 }

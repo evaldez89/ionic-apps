@@ -14,6 +14,7 @@
                     display-format="YYYY MMMM DD"
                     cancelText="Descartar"
                     [(ngModel)]="birthDate"
+                    (ionChange)="dateChanged( $event )"
                     placeholder="Nacimiento"></ion-datetime>
     </ion-item>
   </ion-list>
