@@ -2,6 +2,17 @@
 
 <ion-content>
 
+  <ion-list>
 
+    <ion-list-header>
+      <ion-header>Fechas</ion-header>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Fecha de Nacimiento</ion-label>
+      <ion-datetime value="{{ birthDate | date: 'yyyy-MM-dd'}}"
+                    placeholder="Nacimiento"></ion-datetime>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
