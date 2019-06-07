@@ -13,6 +13,7 @@
       <ion-datetime value="{{ birthDate | date: 'yyyy-MM-dd'}}"
                     display-format="YYYY MMMM DD"
                     cancelText="Descartar"
+                    [(ngModel)]="birthDate"
                     placeholder="Nacimiento"></ion-datetime>
     </ion-item>
   </ion-list>
