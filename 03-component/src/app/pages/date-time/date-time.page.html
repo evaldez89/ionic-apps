@@ -10,10 +10,9 @@
 
     <ion-item>
       <ion-label>Fecha de Nacimiento</ion-label>
-      <ion-datetime value="{{ birthDate | date: 'yyyy-MM-dd'}}"
-                    display-format="YYYY MMMM DD"
+      <ion-datetime display-format="YYYY MMMM DD"
                     cancelText="Descartar"
-                    [(ngModel)]="birthDate"
+                    (ngModel)="birthDate.toISOString()"
                     (ionChange)="dateChanged( $event )"
                     placeholder="Nacimiento"></ion-datetime>
     </ion-item>
