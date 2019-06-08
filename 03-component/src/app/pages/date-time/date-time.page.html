@@ -40,6 +40,13 @@
       </ion-datetime>
     </ion-item>
 
+    <ion-item>
+        <ion-label>Custom</ion-label>
+        <ion-datetime [pickerOptions]="customPickerOptions"
+                      [(ngModel)]="customDate">
+        </ion-datetime>
+      </ion-item>
+
   </ion-list>
 
 </ion-content>
