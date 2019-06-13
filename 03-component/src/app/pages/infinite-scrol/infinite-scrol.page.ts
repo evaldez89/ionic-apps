@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-infinite-scrol',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class InfiniteScrolPage implements OnInit {
 
   data: any[] = Array(20);
+
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   constructor() { }
 
@@ -21,6 +24,7 @@ export class InfiniteScrolPage implements OnInit {
 
       if ( this.data.length > 50 ) {
         event.target.complete();
+        this.infiniteScroll.disabled = true;
         return;
       }
 
