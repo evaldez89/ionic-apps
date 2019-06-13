@@ -21,7 +21,7 @@ export class InputPage implements OnInit {
 
   onFormSubmit() {
     console.log('Form submit');
-
+    console.log(this.usuario);
   }
 
 }
