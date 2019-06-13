@@ -3,9 +3,16 @@
 <ion-content>
 
   <ion-list>
+
+    <ion-list-header>
+      <ion-label>Nombre: {{ nombre || 'Nameless' }}</ion-label>
+    </ion-list-header>
+
     <ion-item>
-      <ion-label>Nombre</ion-label>
-      <ion-input></ion-input>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text"
+                 [(ngModel)]="nombre">
+      </ion-input>
     </ion-item>
   </ion-list>
 
