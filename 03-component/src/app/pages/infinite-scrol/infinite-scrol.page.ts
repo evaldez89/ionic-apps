@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfiniteScrolPage implements OnInit {
 
+  data: any[] = Array(20);
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  loadData(event) {
+    console.log('cargando los siguientes...');
+
+    setTimeout(() => {
+      const newData = Array(20);
+      this.data.push( ...newData );
+    }, 1000);
   }
 
 }
