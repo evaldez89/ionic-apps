@@ -9,9 +9,19 @@ export class InputPage implements OnInit {
 
   nombre: string;
 
+  usuario = {
+    email: '',
+    password: ''
+  };
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onFormSubmit() {
+    console.log('Form submit');
+
   }
 
 }
