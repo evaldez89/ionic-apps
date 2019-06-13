@@ -18,6 +18,12 @@ export class InfiniteScrolPage implements OnInit {
     console.log('cargando los siguientes...');
 
     setTimeout(() => {
+
+      if ( this.data.length > 50 ) {
+        event.target.complete();
+        return;
+      }
+
       const newData = Array(20);
       this.data.push( ...newData );
 
