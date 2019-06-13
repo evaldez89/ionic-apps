@@ -20,6 +20,8 @@ export class InfiniteScrolPage implements OnInit {
     setTimeout(() => {
       const newData = Array(20);
       this.data.push( ...newData );
+
+      event.target.complete();
     }, 1000);
   }
 
