@@ -3,14 +3,14 @@
 <ion-content>
 
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor="let user of userList | async ">
       <ion-label> 
-        <h3>Nombre</h3>
-        <p>Hola</p>
+        <h3>{{ user.name }}</h3>
+        <p>{{ user.email }}</p>
       </ion-label>
 
       <ion-label slot="end" text-rigth>
-        80930949403
+        {{ user.phone }}
       </ion-label>
     </ion-item>
   </ion-list>
