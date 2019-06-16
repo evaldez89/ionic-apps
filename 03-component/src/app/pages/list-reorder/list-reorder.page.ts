@@ -14,4 +14,9 @@ export class ListReorderPage implements OnInit {
   ngOnInit() {
   }
 
+  reorderEvent( event ) {
+    console.log(event);
+    event.detail.complete();
+  }
+
 }

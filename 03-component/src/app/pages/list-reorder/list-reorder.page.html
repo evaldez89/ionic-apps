@@ -12,7 +12,8 @@
 <ion-content>
 
   <ion-list>
-    <ion-reorder-group disabled="false">
+    <ion-reorder-group [disabled]="false"
+                       (ionItemReorder)="reorderEvent( $event )">
         <ion-item *ngFor="let hero of heores">
           <ion-label> {{ hero }} </ion-label>
           <ion-reorder slot="end"></ion-reorder>
