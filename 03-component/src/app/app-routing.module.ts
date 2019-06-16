@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'infinite-scrol', loadChildren: './pages/infinite-scrol/infinite-scrol.module#InfiniteScrolPageModule' },
   { path: 'input', loadChildren: './pages/input/input.module#InputPageModule' },
   { path: 'list', loadChildren: './pages/list/list.module#ListPageModule' },
+  { path: 'list-reorder', loadChildren: './pages/list-reorder/list-reorder.module#ListReorderPageModule' },
 ];
 
 @NgModule({
