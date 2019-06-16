@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListReorderPage implements OnInit {
 
+  heores = ['Acuaman', 'Superman', 'Batman', 'Mujer Maravilla', 'Flash', 'Robin'];
+
   constructor() { }
 
   ngOnInit() {
