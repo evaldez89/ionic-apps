@@ -17,4 +17,15 @@ export class ListPage implements OnInit {
     this.userList = this.dataService.getUsers();
   }
 
+  delete( user ) {
+    console.log('delete', user );
+  }
+
+  favorite( user ) {
+    console.log('favorite', user );
+  }
+
+  archive( user ) {
+    console.log('archive', user );
+  }
 }
