@@ -16,7 +16,15 @@ export class ListReorderPage implements OnInit {
 
   reorderEvent( event ) {
     console.log(event);
+
+    const movedItem = this.heores.splice( event.detail.from, 1)[0];
+    this.heores.splice(event.detail.to, 0, movedItem);
+
     event.detail.complete();
+  }
+
+  saveOrder(){
+    console.log(this.heores);
   }
 
 }
