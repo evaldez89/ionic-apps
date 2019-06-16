@@ -12,9 +12,12 @@
 <ion-content>
 
   <ion-list>
-      <ion-item *ngFor="let hero of heores">
-        <ion-label> {{ hero }} </ion-label>
-      </ion-item>
-    </ion-list>
+    <ion-reorder-group disabled="false">
+        <ion-item *ngFor="let hero of heores">
+          <ion-label> {{ hero }} </ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+    </ion-reorder-group>
+  </ion-list>
 
 </ion-content>
