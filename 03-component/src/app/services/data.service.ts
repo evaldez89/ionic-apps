@@ -11,4 +11,8 @@ export class DataService {
   getUsers() {
     return this.http.get('http://jsonplaceholder.typicode.com/users');
   }
+
+  getMenuOptions() {
+    return this.http.get('/assets/data/menu.json');
+  }
 }
