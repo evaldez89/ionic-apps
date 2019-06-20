@@ -5,11 +5,12 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-item>Menu Item</ion-item>
-    <ion-item>Menu Item</ion-item>
-    <ion-item>Menu Item</ion-item>
-    <ion-item>Menu Item</ion-item>
-    <ion-item>Menu Item</ion-item>
-    <ion-item>Menu Item</ion-item>
+      <ion-list>
+          <ion-item *ngFor="let menuOption of menuOptions | async"
+                    [routerLink]="menuOption.redirectTo">
+            <ion-icon [name]="menuOption.icon" slot="start"></ion-icon>
+            <ion-label>{{ menuOption.name }}</ion-label>
+          </ion-item>
+        </ion-list>
   </ion-content>
 </ion-menu>

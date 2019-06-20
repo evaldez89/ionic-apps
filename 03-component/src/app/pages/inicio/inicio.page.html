@@ -9,14 +9,5 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item
-      *ngFor="let component of childComponents"
-      [routerLink]="component.redirectTo"
-      detail
-    >
-      <ion-icon [name]="component.icon" slot="start"></ion-icon>
-      <ion-label>{{ component.name }}</ion-label>
-    </ion-item>
-  </ion-list>
+  
 </ion-content>

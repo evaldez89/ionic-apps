@@ -9,9 +9,7 @@ import { MenuOptions } from 'src/app/interfaces/menuoptions';
 })
 export class InicioPage implements OnInit {
 
-  childComponents: MenuOptions[] = [];
-
-  constructor( private menuCtrl: MenuController ) { }
+  constructor() { }
 
   ngOnInit() {
   }

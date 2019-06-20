@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MenuOptions } from '../interfaces/menuoptions';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class DataService {
   }
 
   getMenuOptions() {
-    return this.http.get('/assets/data/menu.json');
+    return this.http.get<MenuOptions[]>('/assets/data/menu.json');
   }
 }
