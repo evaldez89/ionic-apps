@@ -1,6 +1,8 @@
 <ion-app>
 
-  <ion-menu side="start" menuId="principal">
+  <ion-menu side="start"
+            menuId="principal"
+            contentId="main-outlet">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-item>Menu Principal</ion-item>
@@ -16,5 +18,5 @@
     </ion-content>
   </ion-menu>
 
-  <ion-router-outlet></ion-router-outlet>
+  <ion-router-outlet id="main-outlet"></ion-router-outlet>
 </ion-app>
