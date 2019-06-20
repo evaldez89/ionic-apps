@@ -85,11 +85,6 @@ export class InicioPage implements OnInit {
 
   ngOnInit() {
   }
-
-  toggleMenu() {
-    this.menuCtrl.toggle();
-  }
-
 }
 
 interface ChildComponent {
