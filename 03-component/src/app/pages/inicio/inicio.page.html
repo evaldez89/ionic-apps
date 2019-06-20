@@ -4,10 +4,18 @@
       <ion-menu-button color="primary" menu="principal"></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Componentes</ion-title>
+    <ion-title color="primary">Componentes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
+  <ion-list>
+    <ion-item *ngFor="let component of childComponents | async"
+              [routerLink]="component.redirectTo" detail>
+      <ion-icon [name]="component.icon" 
+                slot="start"
+                color="primary"></ion-icon>
+      <ion-label>{{ component.name }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
