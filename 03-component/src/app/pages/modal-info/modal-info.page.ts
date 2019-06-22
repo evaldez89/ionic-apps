@@ -17,12 +17,20 @@ export class ModalInfoPage implements OnInit {
   }
 
   exit(withArgs: boolean) {
+    let infoToParent = {};
+
     if (withArgs) {
       console.log('with arguments');
+      infoToParent = {
+        nombre: 'Eligio',
+        pais: 'Rep. Dom.'
+      };
+
     } else {
       console.log('with no arguments');
     }
-    this.modalCrtl.dismiss();
+
+    this.modalCrtl.dismiss(infoToParent);
   }
 
 }
