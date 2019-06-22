@@ -1,9 +1,21 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
-    <ion-title>modal-info</ion-title>
+    <ion-title>Modal Info Page</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
+  <ion-button (click)="exit(false)"
+              color="primary" 
+              expand="full">
+    Salir Sin Argumentos
+  </ion-button>
+  
+  <ion-button (click)="exit(true)"
+              color="secondary" 
+              expand="full">
+    Salir Con Argumentos
+  </ion-button>
 
 </ion-content>

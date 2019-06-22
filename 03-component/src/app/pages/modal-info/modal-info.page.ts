@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-info',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalInfoPage implements OnInit {
 
-  constructor() { }
+  constructor( private modalCrtl: ModalController) { }
 
   ngOnInit() {
+  }
+
+  exit(withArgs: boolean) {
+    if (withArgs) {
+      console.log('with arguments');
+    } else {
+      console.log('with no arguments');
+    }
+    this.modalCrtl.dismiss();
   }
 
 }
