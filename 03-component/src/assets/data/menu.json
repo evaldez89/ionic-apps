@@ -72,6 +72,6 @@
   {
     "icon": "phone-portrait",
     "name": "Modal",
-    "redirectTo": "/Modal"
+    "redirectTo": "/modal"
   }
 ]
