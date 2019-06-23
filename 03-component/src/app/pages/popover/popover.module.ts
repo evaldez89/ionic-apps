@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PopoverPage } from './popover.page';
+import { PopinfoComponent } from 'src/app/components/popinfo/popinfo.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const routes: Routes = [
   {
@@ -15,11 +17,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  entryComponents: [
+    PopinfoComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ComponentsModule,
   ],
   declarations: [PopoverPage]
 })
