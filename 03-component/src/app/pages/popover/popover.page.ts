@@ -24,7 +24,7 @@ export class PopoverPage implements OnInit {
 
     await popover.present();
 
-    const { data } = await popover.onDidDismiss();
+    const { data } = await popover.onWillDismiss();
     console.log('item received:', data);
   }
 
