@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgressBarPage implements OnInit {
 
+  porcentageValue = 0.05;
+
   constructor() { }
 
   ngOnInit() {
