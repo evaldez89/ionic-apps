@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RefresherPage implements OnInit {
 
+  items: any[] = [];
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  refreshPage( event ) {
+    setTimeout(() => {
+      this.items = Array(40);
+      event.target.complete();
+    }, 1500);
+
   }
 
 }
