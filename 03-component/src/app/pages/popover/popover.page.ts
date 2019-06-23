@@ -18,7 +18,8 @@ export class PopoverPage implements OnInit {
     const popover = await this.popOverCtrl.create({
       component: PopinfoComponent,
       event,
-      mode: 'ios'
+      mode: 'ios',
+      backdropDismiss: false
     });
 
     await popover.present();
