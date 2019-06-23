@@ -83,5 +83,10 @@
     "icon": "code-working",
     "name": "Progress Bar and Range",
     "redirectTo": "/progress-bar"
+  },
+  {
+    "icon": "arrow-round-down",
+    "name": "Refresher",
+    "redirectTo": "/refresher"
   }
 ]
