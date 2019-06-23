@@ -8,7 +8,7 @@
     <ion-title>Popover</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="showPop()">
         <ion-icon name="contact" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -17,7 +17,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-button expand="full">
+  <ion-button (click)="showPop()" expand="full">
     <ion-icon name="contact" slot="icon-only"></ion-icon>
     <ion-label>Popover</ion-label>
   </ion-button>
@@ -27,7 +27,7 @@
   <ion-toolbar color="primary">
 
     <ion-buttons slot="start">
-      <ion-button>
+      <ion-button (click)="showPop()">
         <ion-icon name="contact" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
