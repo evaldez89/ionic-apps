@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonSegment } from '@ionic/angular';
 
 @Component({
   selector: 'app-segment',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SegmentPage implements OnInit {
 
+  @ViewChild(IonSegment) segments: IonSegment;
+
   constructor() { }
 
   ngOnInit() {
+    this.segments.value = 'heroes';
   }
 
   segmentChange(event) {
