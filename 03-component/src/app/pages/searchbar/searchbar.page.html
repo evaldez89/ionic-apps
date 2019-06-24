@@ -17,7 +17,7 @@
 <ion-content>
 
   <ion-list>
-    <ion-item *ngFor="let album of albums | filtro:'abc'">
+    <ion-item *ngFor="let album of albums | filtro:filterText">
       {{ album.title }}
     </ion-item>
   </ion-list>

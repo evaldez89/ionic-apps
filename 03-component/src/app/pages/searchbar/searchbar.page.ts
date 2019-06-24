@@ -9,6 +9,7 @@ import { DataService } from 'src/app/services/data.service';
 export class SearchbarPage implements OnInit {
 
   albums: any[] = [];
+  filterText = '';
 
   constructor( private dataService: DataService ) { }
 
@@ -20,7 +21,7 @@ export class SearchbarPage implements OnInit {
   }
 
   search( event ) {
-    console.log(event);
+    this.filterText = event.detail.value;
   }
 
 }

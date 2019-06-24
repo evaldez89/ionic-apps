@@ -7,9 +7,16 @@ export class FiltroPipe implements PipeTransform {
 
   transform(arrayToFilter: any[], filterText: string): any[] {
 
-    console.log(arrayToFilter);
+    if (filterText === '') {
+      return arrayToFilter;
+    }
 
-    return arrayToFilter;
+    filterText = filterText.toLowerCase();
+
+    return arrayToFilter.filter( item => {
+      return item.title.toLowerCase()
+              .includes( filterText );
+    });
   }
 
 }
