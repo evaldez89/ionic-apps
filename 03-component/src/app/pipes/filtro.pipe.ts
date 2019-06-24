@@ -5,8 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FiltroPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return null;
+  transform(arrayToFilter: any[], filterText: string): any[] {
+
+    console.log(arrayToFilter);
+
+    return arrayToFilter;
   }
 
 }
