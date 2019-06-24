@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
 
     <ion-buttons slot="start">
@@ -7,6 +7,11 @@
 
     <ion-title>Search Bar</ion-title>
   </ion-toolbar>
+
+  <ion-searchbar  animated
+                  mode="ios"
+                  (ionChange)="search( $event )"></ion-searchbar>
+
 </ion-header>
 
 <ion-content>
