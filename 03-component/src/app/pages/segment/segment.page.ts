@@ -13,6 +13,7 @@ export class SegmentPage implements OnInit {
 
   @ViewChild(IonSegment) segments: IonSegment;
   heroes: Observable<Hero[]>;
+  segmentFilter = '';
 
   constructor( private dataService: DataService ) { }
 
@@ -22,8 +23,12 @@ export class SegmentPage implements OnInit {
   }
 
   segmentChange(event) {
-    const segment = event.detail.value;
-    console.log( segment );
-    console.log( this.heroes );
+    const value = event.detail.value;
+    if (value === 'heroes') {
+      this.segmentFilter = '';
+    } else {
+      this.segmentFilter = value;
+    }
+
   }
 }

@@ -19,7 +19,7 @@
   </ion-segment>
 
   <ion-list>
-    <ion-item *ngFor="let hero of heroes | async">
+    <ion-item *ngFor="let hero of heroes | async | filtro: segmentFilter: 'publisher'">
       <ion-label>{{ hero.superhero }}</ion-label>
     </ion-item>
   </ion-list>
