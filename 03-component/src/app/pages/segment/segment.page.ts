@@ -23,11 +23,11 @@ export class SegmentPage implements OnInit {
   }
 
   segmentChange(event) {
-    const value = event.detail.value;
-    if (value === 'heroes') {
+    const selectedSegment = event.detail.value;
+    if (selectedSegment === 'heroes') {
       this.segmentFilter = '';
     } else {
-      this.segmentFilter = value;
+      this.segmentFilter = selectedSegment;
     }
 
   }

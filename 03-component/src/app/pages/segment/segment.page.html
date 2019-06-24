@@ -18,13 +18,19 @@
 
   </ion-segment>
 
-  <ion-list>
-    <ion-item *ngFor="let hero of heroes | async | filtro: segmentFilter: 'publisher'">
-      <ion-label>{{ hero.superhero }}</ion-label>
-    </ion-item>
-  </ion-list>
 </ion-toolbar>
 
 <ion-content>
 
+  <ion-list>
+    <ion-item *ngFor="let hero of (heroes | async) | filtro: segmentFilter: 'publisher'"
+              class="animated fadeIn fast">
+      <ion-label>
+        <h3>{{ hero.superhero }} <small>{{ hero.alter_ego }}</small> </h3>
+        <p> {{ hero.first_appearance }} </p>
+      </ion-label>
+      <ion-label slot="end" text-right> {{ hero.publisher }} </ion-label>
+    </ion-item>
+  </ion-list>
+      
 </ion-content>
