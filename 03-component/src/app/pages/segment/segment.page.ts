@@ -13,6 +13,7 @@ export class SegmentPage implements OnInit {
   }
 
   segmentChange(event) {
-    console.log( event );
+    const segment = event.detail.value;
+    console.log( segment );
   }
 }
