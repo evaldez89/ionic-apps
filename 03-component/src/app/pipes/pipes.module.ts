@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
+import { FiltroPipe } from './filtro.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [FiltroPipe],
   imports: []
 })
 export class PipesModule { }
