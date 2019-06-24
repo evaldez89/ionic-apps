@@ -12,4 +12,7 @@ export class SegmentPage implements OnInit {
   ngOnInit() {
   }
 
+  segmentChange(event) {
+    console.log( event );
+  }
 }
