@@ -17,6 +17,12 @@
     </ion-segment-button>
 
   </ion-segment>
+
+  <ion-list>
+    <ion-item *ngFor="let hero of heroes | async">
+      <ion-label>{{ hero.superhero }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-toolbar>
 
 <ion-content>

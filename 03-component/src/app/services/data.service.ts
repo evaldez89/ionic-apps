@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MenuOptions } from '../interfaces/menuoptions';
+import { Hero } from '../interfaces/heroe';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class DataService {
 
   getAlbums() {
     return this.http.get<any[]>('http://jsonplaceholder.typicode.com/albums');
+  }
+
+  getHeroes() {
+    return this.http.get<Hero[]>('/assets/data/superheroes.json');
   }
 }
