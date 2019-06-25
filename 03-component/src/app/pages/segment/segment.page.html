@@ -31,6 +31,18 @@
       </ion-label>
       <ion-label slot="end" text-right> {{ hero.publisher }} </ion-label>
     </ion-item>
+  </ion-list> 
+
+  <ion-list *ngIf="( heroes | async ) === null">
+    <ion-item *ngFor="let item of [1,1,1,1,1,1,1,1,1,1]">
+      <ion-label>
+        <h3> <ion-skeleton-text width="70%"></ion-skeleton-text> </h3>
+        <p> <ion-skeleton-text width="70%"></ion-skeleton-text> </p>
+      </ion-label>
+      <ion-label slot="end" text-right>
+          <ion-skeleton-text width="40px"></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
   </ion-list>
       
 </ion-content>
