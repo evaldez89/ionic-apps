@@ -34,7 +34,8 @@
   </ion-list> 
 
   <ion-list *ngIf="( heroes | async ) === null">
-    <ion-item *ngFor="let item of [1,1,1,1,1,1,1,1,1,1]">
+    <ion-item *ngFor="let item of [1,1,1,1,1,1,1,1,1,1]"
+              class="animated flash slow infinite">
       <ion-label>
         <h3> <ion-skeleton-text width="70%"></ion-skeleton-text> </h3>
         <p> <ion-skeleton-text width="70%"></ion-skeleton-text> </p>
