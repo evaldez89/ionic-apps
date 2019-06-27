@@ -1,6 +1,24 @@
 <ion-app>
   <ion-split-pane when="md" contentId="main-outlet">
-    <app-menu></app-menu>
+
+    <ion-menu side="start" menuId="principal" contentId="main-outlet">
+      <ion-header>
+        <ion-toolbar>
+          <ion-item color="primary">Menu Principal</ion-item>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle autoHide="false" *ngFor="let menuOption of menuOptions | async">
+            <ion-item [routerLink]="menuOption.redirectTo">
+              <ion-icon [name]="menuOption.icon" slot="start"></ion-icon>
+              <ion-label>{{ menuOption.name }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
     <ion-router-outlet id="main-outlet"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
