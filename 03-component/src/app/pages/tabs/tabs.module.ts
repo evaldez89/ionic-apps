@@ -15,6 +15,10 @@ const routes: Routes = [
       {
         path: 'account',
         loadChildren: '../avatar/avatar.module#AvatarPageModule'
+      },
+      {
+        path: 'contact',
+        loadChildren: '../list/list.module#ListPageModule'
       }
     ]
   }
