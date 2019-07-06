@@ -19,6 +19,10 @@ const routes: Routes = [
       {
         path: 'contact',
         loadChildren: '../list/list.module#ListPageModule'
+      },
+      {
+        path: 'settings',
+        loadChildren: '../infinite-scrol/infinite-scrol.module#InfiniteScrolPageModule'
       }
     ]
   }
