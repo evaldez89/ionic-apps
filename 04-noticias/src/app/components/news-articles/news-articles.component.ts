@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Article } from 'src/app/interfaces/news.interface';
 
 @Component({
   selector: 'app-news-articles',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-articles.component.scss'],
 })
 export class NewsArticlesComponent implements OnInit {
+
+  @Input() newsArticles: Article[] = [];
 
   constructor() { }
 
