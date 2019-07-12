@@ -1,3 +1,18 @@
-<p>
-  article-news works!
-</p>
+<ion-card color="dark">
+
+  <ion-card-header>
+    <ion-card-subtitle>
+      <span class="text-primary">{{ newsIndex }} - </span>
+      <span class="news-source">{{ newsArticle.source.name }} </span>
+    </ion-card-subtitle>
+    <ion-card-title> {{ newsArticle.title }} </ion-card-title>
+  </ion-card-header>
+
+  <ion-img *ngIf="newsArticle.urlToImage"
+    [src]="newsArticle.urlToImage"></ion-img>
+
+  <ion-card-content>
+    <p> {{ newsArticle.description }} </p>
+  </ion-card-content>
+
+</ion-card>
