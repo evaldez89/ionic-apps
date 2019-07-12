@@ -4,6 +4,15 @@
       Headlines
     </ion-title>
   </ion-toolbar>
+
+  <ion-segment scrollable mode="md">
+    <ion-segment-button mode="md"
+                        *ngFor="let category of categories"
+                        [value]="category">
+      <ion-label text-capitalizze> {{category}} </ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content color="dark"></ion-content>
