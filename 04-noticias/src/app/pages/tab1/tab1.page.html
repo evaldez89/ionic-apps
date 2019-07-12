@@ -11,11 +11,14 @@
     <ion-row>
 
       <ion-col  size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
-                *ngFor="let news of newsArticles">
+                *ngFor="let news of newsArticles; let i = index">
         <ion-card color="dark">
 
           <ion-card-header>
-            <ion-card-subtitle> {{ news.source.name }} </ion-card-subtitle>
+            <ion-card-subtitle> 
+              <span class="text-primary">{{ i + 1 }} - </span>
+              <span class="news-source">{{ news.source.name }} </span>
+            </ion-card-subtitle>
             <ion-card-title> {{ news.title }} </ion-card-title>
           </ion-card-header>
 
