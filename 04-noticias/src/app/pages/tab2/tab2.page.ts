@@ -19,18 +19,20 @@ export class Tab2Page implements OnInit {
 
   ngOnInit() {
     this.categoriesSegment.value = this.categories[0];
+    this.loadCategoryChange();
+  }
+
+  changeCategory( event ) {
+    this.categoriesSegment.value = event.detail.value;
+    this.loadCategoryChange();
+  }
+
+  loadCategoryChange( ) {
+    this.newsArticles = [];
 
     this.newsService.getHeadLinesByCategory( this.categoriesSegment.value )
     .subscribe( resp => {
       this.newsArticles.push( ...resp.articles );
     });
   }
-
-  getNewsByCategory() {
-    this.newsService.getHeadLinesByCategory( this.categoriesSegment.value )
-    .subscribe( resp => {
-      this.newsArticles.push( ...resp.articles );
-    });
-  }
-
 }
