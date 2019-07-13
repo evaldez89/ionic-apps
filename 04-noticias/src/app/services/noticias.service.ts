@@ -17,11 +17,15 @@ export class NoticiasService {
 
   constructor( private http: HttpClient ) { }
 
-  private executeQuery( query: string ) {
-    return this.http.get<TopHeadLinesResponse>(`${apiUrl}${query}`, { headers });
+  private executeQuery<T>( query: string ) {
+    return this.http.get<T>(`${apiUrl}${query}`, { headers });
   }
 
   getToHeadLines() {
-    return this.executeQuery('/top-headlines?country=us');
+    return this.executeQuery<TopHeadLinesResponse>('/top-headlines?country=us');
+  }
+
+  getHeadLinesByCategory( category: string ) {
+    return this.executeQuery<TopHeadLinesResponse>(`/top-headlines?country=us&category=${category}`);
   }
 }
