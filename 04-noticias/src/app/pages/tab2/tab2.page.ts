@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonSegment } from '@ionic/angular';
 import { NoticiasService } from 'src/app/services/noticias.service';
+import { Article } from 'src/app/interfaces/news.interface';
 
 @Component({
   selector: 'app-tab2',
@@ -10,6 +11,7 @@ import { NoticiasService } from 'src/app/services/noticias.service';
 export class Tab2Page implements OnInit {
 
   categories = ['sports', 'business', 'entertainment', 'general', 'health', 'science', 'technology'];
+  newsArticles: Article[] = [];
 
   @ViewChild(IonSegment) categoriesSegment: IonSegment;
 
@@ -20,14 +22,14 @@ export class Tab2Page implements OnInit {
 
     this.newsService.getHeadLinesByCategory( this.categoriesSegment.value )
     .subscribe( resp => {
-      console.log(resp.articles);
+      this.newsArticles.push( ...resp.articles );
     });
   }
 
   getNewsByCategory() {
     this.newsService.getHeadLinesByCategory( this.categoriesSegment.value )
     .subscribe( resp => {
-      console.log(resp.articles);
+      this.newsArticles.push( ...resp.articles );
     });
   }
 
