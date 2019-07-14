@@ -4,19 +4,19 @@ import { NoticiasService } from 'src/app/services/noticias.service';
 import { Article } from 'src/app/interfaces/news.interface';
 
 @Component({
-  selector: "app-tab2",
-  templateUrl: "tab2.page.html",
-  styleUrls: ["tab2.page.scss"]
+  selector: 'app-tab2',
+  templateUrl: 'tab2.page.html',
+  styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
   categories = [
-    "sports",
-    "business",
-    "entertainment",
-    "general",
-    "health",
-    "science",
-    "technology"
+    'sports',
+    'business',
+    'entertainment',
+    'general',
+    'health',
+    'science',
+    'technology'
   ];
   newsArticles: Article[] = [];
 
