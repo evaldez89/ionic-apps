@@ -4,6 +4,15 @@
     <ion-card-subtitle>
       <span class="text-primary">{{ newsIndex }} - </span>
       <span class="news-source">{{ newsArticle.source.name }} </span>
+
+      <div class="more-news">
+        <ion-button fill="clear"
+                    (click)="openShareMenu()">
+          <ion-icon slot="icon-only"
+                    name="more"></ion-icon>
+        </ion-button>
+      </div>
+
     </ion-card-subtitle>
     <ion-card-title (click)="openNews()" > {{ newsArticle.title }} </ion-card-title>
   </ion-card-header>

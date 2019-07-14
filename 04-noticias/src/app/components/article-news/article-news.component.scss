@@ -1,0 +1,11 @@
+.more-news {
+    font-size: 25px !important;
+    position: absolute;
+    right: -25px;
+    top: -10px;
+}
+
+// Set style specifically for ios
+.ios .more-news {
+    top: -19px !important;
+}
