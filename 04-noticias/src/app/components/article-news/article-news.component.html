@@ -5,11 +5,12 @@
       <span class="text-primary">{{ newsIndex }} - </span>
       <span class="news-source">{{ newsArticle.source.name }} </span>
     </ion-card-subtitle>
-    <ion-card-title> {{ newsArticle.title }} </ion-card-title>
+    <ion-card-title (click)="openNews()" > {{ newsArticle.title }} </ion-card-title>
   </ion-card-header>
 
   <ion-img *ngIf="newsArticle.urlToImage"
-    [src]="newsArticle.urlToImage"></ion-img>
+           (click)="openNews()"
+           [src]="newsArticle.urlToImage"></ion-img>
 
   <ion-card-content>
     <p> {{ newsArticle.description }} </p>
