@@ -28,6 +28,7 @@ export class ArticleNewsComponent implements OnInit {
         {
           text: 'Share',
           icon: 'share',
+          cssClass: 'action-dark',
           handler: () => {
             console.log('Share clicked');
           }
@@ -35,6 +36,7 @@ export class ArticleNewsComponent implements OnInit {
         {
           text: 'Favorite',
           icon: 'heart',
+          cssClass: 'action-dark',
           handler: () => {
             console.log('Favorite clicked');
           }
@@ -43,6 +45,7 @@ export class ArticleNewsComponent implements OnInit {
           text: 'Cancel',
           icon: 'close',
           role: 'cancel',
+          cssClass: 'action-dark',
           handler: () => {
             console.log('Cancel clicked');
           }
