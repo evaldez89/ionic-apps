@@ -24,7 +24,10 @@ export class LocalDataService {
 
   async loadFavorites() {
     const favArticles = await this.storage.get('favorites');
-    this.newsArticles = favArticles;
+
+    if (favArticles) {
+      this.newsArticles = favArticles;
+    }
   }
 
 }
