@@ -3,6 +3,7 @@ import { Article } from 'src/app/interfaces/news.interface';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { LocalDataService } from 'src/app/services/local-data.service';
 
 @Component({
   selector: 'app-article-news',
@@ -16,7 +17,8 @@ export class ArticleNewsComponent implements OnInit {
 
   constructor( private iab: InAppBrowser,
                private actionSheetCtrl: ActionSheetController,
-               private socialSharing: SocialSharing ) { }
+               private socialSharing: SocialSharing,
+               private localDataService: LocalDataService ) { }
 
   ngOnInit() {}
 
@@ -45,7 +47,7 @@ export class ArticleNewsComponent implements OnInit {
           icon: 'heart',
           cssClass: 'action-dark',
           handler: () => {
-            console.log('Favorite clicked');
+            this.localDataService.saveFavorite(this.newsArticle);
           }
         },
         {
