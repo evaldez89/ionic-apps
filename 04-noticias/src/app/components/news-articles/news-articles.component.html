@@ -3,7 +3,9 @@
 
       <ion-col  size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
                 *ngFor="let news of newsArticles; let i = index">
-        <app-article-news [newsArticle]="news" [newsIndex]="i + 1" ></app-article-news>
+        <app-article-news [newsArticle]="news"
+                          [newsIndex]="i + 1"
+                          [inFavorite]="inFavorite"></app-article-news>
       </ion-col>
 
     </ion-row>

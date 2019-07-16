@@ -17,6 +17,7 @@
     </ion-slide>
   </ion-slides>
 
-  <app-news-articles *ngIf="localDataService.newsArticles.length > 0" 
+  <app-news-articles *ngIf="localDataService.newsArticles.length > 0"
+                     inFavorite="true"
                      [newsArticles]="localDataService.newsArticles"></app-news-articles>
 </ion-content>
