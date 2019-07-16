@@ -14,7 +14,7 @@
       </div>
 
     </ion-card-subtitle>
-    <ion-card-title (click)="openNews()" > {{ newsArticle.title }} </ion-card-title>
+    <ion-card-title > {{ newsArticle.title }} </ion-card-title>
   </ion-card-header>
 
   <ion-img *ngIf="newsArticle.urlToImage"
@@ -22,7 +22,7 @@
            class="animated fadeIn slower"
            [src]="newsArticle.urlToImage"></ion-img>
 
-  <ion-card-content>
+  <ion-card-content (click)="openNews()">
     <p> {{ newsArticle.description }} </p>
   </ion-card-content>
 
