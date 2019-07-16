@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Article } from 'src/app/interfaces/news.interface';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, Platform } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { LocalDataService } from 'src/app/services/local-data.service';
 
@@ -19,7 +19,8 @@ export class ArticleNewsComponent implements OnInit {
   constructor( private iab: InAppBrowser,
                private actionSheetCtrl: ActionSheetController,
                private socialSharing: SocialSharing,
-               private localDataService: LocalDataService) { }
+               private localDataService: LocalDataService,
+               private platform: Platform ) { }
 
   ngOnInit() {}
 
@@ -56,12 +57,7 @@ export class ArticleNewsComponent implements OnInit {
           icon: 'share',
           cssClass: 'action-dark',
           handler: () => {
-            this.socialSharing.share(
-              this.newsArticle.title,
-              this.newsArticle.source.name,
-              '',
-              this.newsArticle.url
-            );
+            this.shareArticle();
           }
         },
         favButton,
@@ -78,6 +74,32 @@ export class ArticleNewsComponent implements OnInit {
     });
 
     await actionSheet.present();
+  }
+
+  shareArticle() {
+
+    if (this.platform.is('cordova')) {
+      this.socialSharing.share(
+        this.newsArticle.title,
+        this.newsArticle.source.name,
+        '',
+        this.newsArticle.url
+      );
+    } else {
+
+      if (navigator['share']) {
+        navigator['share']({
+            title: this.newsArticle.title,
+            text: this.newsArticle.source.name,
+            url: this.newsArticle.url,
+        })
+          .then(() => console.log('Successful share'))
+          .catch((error) => console.log('Error sharing', error));
+      } else {
+        console.log('Can not share the article using this browser');
+      }
+
+    }
   }
 
 }
