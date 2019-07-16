@@ -9,6 +9,11 @@ import { Article } from 'src/app/interfaces/news.interface';
 })
 export class Tab3Page {
 
+  slideOptions = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
+
   newsArticles: Article[] = [];
 
   constructor( public localDataService: LocalDataService ) {}
