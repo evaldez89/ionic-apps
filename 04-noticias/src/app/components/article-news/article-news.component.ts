@@ -19,7 +19,7 @@ export class ArticleNewsComponent implements OnInit {
   constructor( private iab: InAppBrowser,
                private actionSheetCtrl: ActionSheetController,
                private socialSharing: SocialSharing,
-               private localDataService: LocalDataService ) { }
+               private localDataService: LocalDataService) { }
 
   ngOnInit() {}
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Article } from '../interfaces/news.interface';
+import { ToastController } from '@ionic/angular';
 
 
 @Injectable({
@@ -10,7 +11,18 @@ export class LocalDataService {
 
   newsArticles: Article[] = [];
 
-  constructor( private storage: Storage ) { }
+  constructor( private storage: Storage,
+               private toastCtrl: ToastController  ) { }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      position: 'middle',
+      duration: 2000
+    });
+
+    toast.present();
+  }
 
   saveFavorite(article: Article) {
 
@@ -19,6 +31,8 @@ export class LocalDataService {
     if (!newsExist) {
       this.newsArticles.unshift( article );
       this.storage.set('favorites', this.newsArticles);
+
+      this.presentToast( 'Saved to Favorites' );
     }
   }
 
@@ -27,6 +41,8 @@ export class LocalDataService {
 
     if (favArticles) {
       this.newsArticles = favArticles;
+
+      this.presentToast( 'Remove from Favorites' );
     }
   }
 
