@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LocalDataService } from 'src/app/services/local-data.service';
+import { Article } from 'src/app/interfaces/news.interface';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +9,8 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  newsArticles: Article[] = [];
+
+  constructor( public localDataService: LocalDataService ) {}
 
 }

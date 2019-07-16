@@ -22,8 +22,9 @@ export class LocalDataService {
     }
   }
 
-  loadFavorites() {
-
+  async loadFavorites() {
+    const favArticles = await this.storage.get('favorites');
+    this.newsArticles = favArticles;
   }
 
 }
