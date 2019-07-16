@@ -28,6 +28,27 @@ export class ArticleNewsComponent implements OnInit {
   }
 
   async openShareMenu() {
+
+    let favButton = {
+      text: 'Favorite',
+      icon: 'heart',
+      cssClass: 'action-dark',
+      handler: () => {
+        this.localDataService.saveFavorite(this.newsArticle);
+      }
+    };
+
+    if (this.inFavorite) {
+      favButton = {
+        text: 'Remove Favorite',
+        icon: 'trash',
+        cssClass: 'action-dark',
+        handler: () => {
+          this.localDataService.removeFavorite(this.newsArticle);
+        }
+      };
+    }
+
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {
@@ -43,14 +64,7 @@ export class ArticleNewsComponent implements OnInit {
             );
           }
         },
-        {
-          text: 'Favorite',
-          icon: 'heart',
-          cssClass: 'action-dark',
-          handler: () => {
-            this.localDataService.saveFavorite(this.newsArticle);
-          }
-        },
+        favButton,
         {
           text: 'Cancel',
           icon: 'close',

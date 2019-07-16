@@ -30,4 +30,14 @@ export class LocalDataService {
     }
   }
 
+  removeFavorite(article: Article) {
+
+    const newsExist = this.newsArticles.find( news => news.title === article.title );
+
+    if (newsExist) {
+      this.newsArticles = this.newsArticles.filter( news => news.title !== article.title );
+      this.storage.set('favorites', this.newsArticles);
+    }
+  }
+
 }
