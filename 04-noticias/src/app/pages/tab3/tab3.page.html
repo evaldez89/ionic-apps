@@ -7,5 +7,15 @@
 </ion-header>
 
 <ion-content color="dark">
-  <app-news-articles [newsArticles]="localDataService.newsArticles"></app-news-articles>
+
+  <ion-slides *ngIf="localDataService.newsArticles.length === 0">
+    <ion-slide>
+      <ion-label>
+          It's lonely here... Add some news!
+      </ion-label>
+    </ion-slide>
+  </ion-slides>
+
+  <app-news-articles *ngIf="localDataService.newsArticles.length > 0" 
+                     [newsArticles]="localDataService.newsArticles"></app-news-articles>
 </ion-content>
