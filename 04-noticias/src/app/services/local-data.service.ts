@@ -12,7 +12,9 @@ export class LocalDataService {
   newsArticles: Article[] = [];
 
   constructor( private storage: Storage,
-               private toastCtrl: ToastController  ) { }
+               private toastCtrl: ToastController  ) {
+      this.loadFavorites();
+  }
 
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({
