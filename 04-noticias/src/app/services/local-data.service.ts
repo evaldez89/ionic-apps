@@ -19,7 +19,8 @@ export class LocalDataService {
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({
       message,
-      position: 'middle',
+      translucent: true,
+      position: 'bottom',
       duration: 2000
     });
 
