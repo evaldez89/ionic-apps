@@ -44,8 +44,6 @@ export class LocalDataService {
 
     if (favArticles) {
       this.newsArticles = favArticles;
-
-      this.presentToast( 'Remove from Favorites' );
     }
   }
 
