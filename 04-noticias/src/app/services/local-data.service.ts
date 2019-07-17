@@ -54,6 +54,8 @@ export class LocalDataService {
     if (newsExist) {
       this.newsArticles = this.newsArticles.filter( news => news.title !== article.title );
       this.storage.set('favorites', this.newsArticles);
+
+      this.presentToast( 'Remove from Favorites' );
     }
   }
 
