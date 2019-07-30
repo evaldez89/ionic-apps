@@ -9,7 +9,11 @@ import { Movie } from '../interfaces/movie.interface';
 })
 export class Tab1Page implements OnInit {
 
-  recentMovies: Movie[];
+  recentMovies: Movie[] = [];
+  slidesOpt = {
+    slidesPerView: 1.1,
+    freeMode: true
+  };
 
   constructor( private movieService: MoviesDataService ) {}
 
