@@ -8,7 +8,7 @@
           <ion-card-title> {{ movie.title }} </ion-card-title>
         </ion-card-header>
 
-        <ion-img src="https://image.tmdb.org/t/p/w500/{{ movie.backdrop_path }}"></ion-img>
+        <ion-img src="{{ movie.backdrop_path | image }}"></ion-img>
         
 
         <ion-card-content>
