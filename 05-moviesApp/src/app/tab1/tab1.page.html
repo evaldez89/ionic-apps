@@ -3,14 +3,13 @@
     <ion-slide *ngFor="let movie of recentMovies">
 
       <ion-card>
+        <img *ngIf="movie.backdrop_path" [src]="movie.backdrop_path | image">
 
         <ion-card-header>
           <ion-card-title> {{ movie.title }} </ion-card-title>
         </ion-card-header>
 
-        <ion-img src="{{ movie.backdrop_path | image }}"></ion-img>
         
-
         <ion-card-content>
           {{ movie.overview }}
         </ion-card-content>
