@@ -11,7 +11,10 @@ export class Tab1Page implements OnInit {
   constructor( private movieService: MoviesDataService ) {}
 
   ngOnInit() {
-    this.movieService.getMovies().subscribe( console.log);
+    this.movieService.getMovies()
+    .subscribe( resp => {
+      console.log( resp.results );
+    });
   }
 
 }
