@@ -9,9 +9,9 @@ export class ImagePipe implements PipeTransform {
 
   transform(img: string, size: string = 'w500'): string {
     if (!img) {
-      return;
+      return './assets/no-image-banner.png';
     }
 
-    return `${ URL_IMAGE }${ size }/${ img }`;
+    return `${ URL_IMAGE }${ size }${ img }`;
   }
 }
