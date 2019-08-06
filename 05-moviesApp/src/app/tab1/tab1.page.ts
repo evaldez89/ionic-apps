@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesDataService } from '../services/movies-data.service';
 import { Movie } from '../interfaces/movie.interface';
+import { DatePipe } from '@angular/common';
+import { MonthLimits } from '../interfaces/month.class';
 
 @Component({
   selector: 'app-tab1',
@@ -15,10 +17,17 @@ export class Tab1Page implements OnInit {
     freeMode: true
   };
 
-  constructor( private movieService: MoviesDataService ) {}
+  constructor( private movieService: MoviesDataService,
+               private datePipe: DatePipe ) {}
 
   ngOnInit() {
-    this.movieService.getMovies()
+    const monthLimits = new MonthLimits();
+
+    const initialDate = this.datePipe.transform(monthLimits.firstDay, 'yyyy-MM-dd');
+    const finalDate = this.datePipe.transform(monthLimits.lastDay, 'yyyy-MM-dd');
+    console.log();
+
+    this.movieService.getMovies(initialDate, finalDate, 'es')
     .subscribe( resp => {
       this.recentMovies = resp.results;
     });

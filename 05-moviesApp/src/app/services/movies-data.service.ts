@@ -13,15 +13,15 @@ export class MoviesDataService {
 
   constructor( private http: HttpClient ) { }
 
-  private contructApiQuery<T>( query: string, lang = 'es' ) {
+  private contructApiQuery<T>( query: string, lang) {
     query = BASE_URL + query;
     query += `&api_key=${ API_KEY }&language=${ lang }&include_image_language=${ lang }`;
 
     return this.http.get<T>(query);
   }
 
-  getMovies() {
-    const query = '/discover/movie?primary_release_date.gte=2019-01-01&primary_release_date.lte=2019-01-31';
-    return this.contructApiQuery<ResponseHeader>(query);
+  getMovies(initialDate: string, finalDate: string, lang: string) {
+    const baseQuery = `/discover/movie?primary_release_date.gte=${ initialDate }&primary_release_date.lte=${ finalDate }`;
+    return this.contructApiQuery<ResponseHeader>(baseQuery, lang);
   }
 }
