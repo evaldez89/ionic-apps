@@ -12,10 +12,6 @@ import { MonthLimits } from '../interfaces/month.class';
 export class Tab1Page implements OnInit {
 
   recentMovies: Movie[] = [];
-  slidesOpt = {
-    slidesPerView: 1.4,
-    freeMode: true
-  };
 
   constructor( private movieService: MoviesDataService,
                private datePipe: DatePipe ) {}

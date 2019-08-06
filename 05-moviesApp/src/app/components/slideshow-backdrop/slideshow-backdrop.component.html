@@ -1,3 +1,20 @@
-<p>
-  slideshow-backdrop works!
-</p>
+<ion-slides [options]="slidesOpt">
+    <ion-slide *ngFor="let movie of movies">
+
+      <ion-card>
+        
+        <ion-img [src]="movie.backdrop_path | image" ></ion-img>
+
+        <ion-card-header>
+          <ion-card-title> {{ movie.title }} </ion-card-title>
+        </ion-card-header>
+
+<!--         
+        <ion-card-content>
+          {{ movie.overview }}
+        </ion-card-content> -->
+
+      </ion-card>
+
+    </ion-slide>
+  </ion-slides>
