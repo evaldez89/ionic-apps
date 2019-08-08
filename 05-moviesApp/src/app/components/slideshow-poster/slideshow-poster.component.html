@@ -1,3 +1,11 @@
-<p>
-  slideshow-poster works!
-</p>
+<ion-slides [options]="slidesOpt">
+  <ion-slide *ngFor="let movie of movies">
+
+    <ion-card>
+
+      <ion-img class="movie-poster" [src]="movie.poster_path | image"></ion-img>
+
+    </ion-card>
+
+  </ion-slide>
+</ion-slides>
