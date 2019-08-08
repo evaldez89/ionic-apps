@@ -12,6 +12,7 @@ import { MonthLimits } from '../interfaces/month.class';
 export class Tab1Page implements OnInit {
 
   recentMovies: Movie[] = [];
+  popularMovies: Movie[] = [];
 
   constructor( private movieService: MoviesDataService,
                private datePipe: DatePipe ) {}
@@ -27,6 +28,11 @@ export class Tab1Page implements OnInit {
     .subscribe( resp => {
       this.recentMovies = resp.results;
     });
+
+    this.movieService.getPopular()
+      .subscribe( resp => {
+        this.popularMovies = resp.results;
+      });
   }
 
 }

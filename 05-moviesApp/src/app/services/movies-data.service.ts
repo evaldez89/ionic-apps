@@ -13,7 +13,7 @@ export class MoviesDataService {
 
   constructor( private http: HttpClient ) { }
 
-  private contructApiQuery<T>( query: string, lang) {
+  private constructApiQuery<T>( query: string, lang) {
     query = BASE_URL + query;
     query += `&api_key=${ API_KEY }&language=${ lang }&include_image_language=${ lang }`;
 
@@ -22,6 +22,12 @@ export class MoviesDataService {
 
   getMovies(initialDate: string, finalDate: string, lang: string) {
     const baseQuery = `/discover/movie?primary_release_date.gte=${ initialDate }&primary_release_date.lte=${ finalDate }`;
-    return this.contructApiQuery<ResponseHeader>(baseQuery, lang);
+    return this.constructApiQuery<ResponseHeader>(baseQuery, lang);
+  }
+
+  getPopular(lang = 'es') {
+    const query = '/discover/movie?sort_by=popularity.desc';
+
+    return this.constructApiQuery<ResponseHeader>(query, lang);
   }
 }
