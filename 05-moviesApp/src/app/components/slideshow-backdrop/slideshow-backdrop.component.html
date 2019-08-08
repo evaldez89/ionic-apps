@@ -1,20 +1,15 @@
 <ion-slides [options]="slidesOpt">
-    <ion-slide *ngFor="let movie of movies">
+  <ion-slide *ngFor="let movie of movies">
 
-      <ion-card>
-        
-        <ion-img [src]="movie.backdrop_path | image" ></ion-img>
+    <ion-card>
 
-        <ion-card-header>
-          <ion-card-title> {{ movie.title }} </ion-card-title>
-        </ion-card-header>
+      <ion-img [src]="movie.backdrop_path | image"></ion-img>
 
-<!--         
-        <ion-card-content>
-          {{ movie.overview }}
-        </ion-card-content> -->
+      <ion-card-header>
+        <ion-card-title> {{ movie.title }} </ion-card-title>
+      </ion-card-header>
 
-      </ion-card>
+    </ion-card>
 
-    </ion-slide>
-  </ion-slides>
+  </ion-slide>
+</ion-slides>
