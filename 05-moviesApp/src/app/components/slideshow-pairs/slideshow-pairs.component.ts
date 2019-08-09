@@ -8,6 +8,13 @@ import { Movie } from 'src/app/interfaces/movie.interface';
 })
 export class SlideshowPairsComponent implements OnInit {
 
+  @Input() movies: Movie[] = [];
+
+  slidesOpt = {
+    slidesPerView: 2.4,
+    freeMode: true
+  };
+
   constructor() { }
 
   ngOnInit() {}
