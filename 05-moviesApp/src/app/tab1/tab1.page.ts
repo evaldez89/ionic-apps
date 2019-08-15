@@ -17,6 +17,13 @@ export class Tab1Page implements OnInit {
   constructor( private movieService: MoviesDataService,
                private datePipe: DatePipe ) {}
 
+  loadPopularMovies() {
+    this.movieService.getPopular()
+      .subscribe( resp => {
+        this.popularMovies = resp.results;
+      });
+  }
+
   ngOnInit() {
     const monthLimits = new MonthLimits();
 
@@ -29,10 +36,8 @@ export class Tab1Page implements OnInit {
       this.recentMovies = resp.results;
     });
 
-    this.movieService.getPopular()
-      .subscribe( resp => {
-        this.popularMovies = resp.results;
-      });
+    this.loadPopularMovies();
   }
 
+  
 }
