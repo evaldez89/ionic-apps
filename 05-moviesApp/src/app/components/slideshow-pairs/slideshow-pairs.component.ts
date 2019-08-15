@@ -19,4 +19,8 @@ export class SlideshowPairsComponent implements OnInit {
 
   ngOnInit() {}
 
+  nextMovies() {
+    console.log('moremovies');
+  }
+
 }
