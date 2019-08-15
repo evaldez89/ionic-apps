@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie.interface';
 
 @Component({
@@ -9,6 +9,7 @@ import { Movie } from 'src/app/interfaces/movie.interface';
 export class SlideshowPairsComponent implements OnInit {
 
   @Input() movies: Movie[] = [];
+  @Output() loadNextPage = new EventEmitter();
 
   slidesOpt = {
     slidesPerView: 2.4,
@@ -20,7 +21,7 @@ export class SlideshowPairsComponent implements OnInit {
   ngOnInit() {}
 
   nextMovies() {
-    console.log('moremovies');
+    this.loadNextPage.emit();
   }
 
 }
