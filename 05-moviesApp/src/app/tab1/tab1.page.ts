@@ -20,7 +20,8 @@ export class Tab1Page implements OnInit {
   loadPopularMovies() {
     this.movieService.getPopular()
       .subscribe( resp => {
-        this.popularMovies = resp.results;
+        const updateMoviesArray = [ ...this.popularMovies , ...resp.results ];
+        this.popularMovies = updateMoviesArray;
       });
   }
 
