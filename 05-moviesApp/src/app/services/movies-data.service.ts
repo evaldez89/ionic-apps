@@ -11,6 +11,8 @@ const API_KEY = environment.apiKey;
 })
 export class MoviesDataService {
 
+  private popularMoviesPage = 0;
+
   constructor( private http: HttpClient ) { }
 
   private constructApiQuery<T>( query: string, lang) {
@@ -26,7 +28,7 @@ export class MoviesDataService {
   }
 
   getPopular(lang = 'es') {
-    const query = '/discover/movie?sort_by=popularity.desc';
+    const query = `/discover/movie?sort_by=popularity.desc&page=${ ++this.popularMoviesPage }`;
 
     return this.constructApiQuery<ResponseHeader>(query, lang);
   }
