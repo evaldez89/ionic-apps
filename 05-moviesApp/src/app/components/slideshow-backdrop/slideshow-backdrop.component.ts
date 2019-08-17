@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie.interface';
+import { ModalController } from '@ionic/angular';
+import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 
 @Component({
   selector: 'app-slideshow-backdrop',
@@ -15,8 +17,21 @@ export class SlideshowBackdropComponent implements OnInit {
     freeMode: true
   };
 
-  constructor() { }
+  constructor( private modalController: ModalController ) { }
 
   ngOnInit() {}
+
+  async showMovieDetail( movie: Movie ) {
+    const movieModal = await this.modalController.create({
+      component: MovieDetailComponent,
+      componentProps: {
+        movie
+      }
+    });
+
+    await movieModal.present();
+
+    return movieModal;
+  }
 
 }
