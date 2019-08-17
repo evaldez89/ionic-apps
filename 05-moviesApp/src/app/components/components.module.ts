@@ -8,6 +8,9 @@ import { SlideshowPairsComponent } from './slideshow-pairs/slideshow-pairs.compo
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
+  entryComponents: [
+    MovieDetailComponent
+  ],
   declarations: [
     SlideshowBackdropComponent,
     SlideshowPosterComponent,
