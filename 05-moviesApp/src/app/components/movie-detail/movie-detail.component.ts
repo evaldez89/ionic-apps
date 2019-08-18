@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from 'src/app/interfaces/movie.interface';
 import { MoviesDataService } from 'src/app/services/movies-data.service';
 import { MovieDetails } from 'src/app/interfaces/movie.details.interface';
 import { Cast } from 'src/app/interfaces/movie.credits.interface';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-movie-detail',
@@ -22,7 +22,8 @@ export class MovieDetailComponent implements OnInit {
     spaceBetween: -5
   };
 
-  constructor( private movieService: MoviesDataService ) { }
+  constructor( private movieService: MoviesDataService,
+               public modalController: ModalController ) { }
 
   ngOnInit() {
 
@@ -37,6 +38,13 @@ export class MovieDetailComponent implements OnInit {
         this.movieActors = resp.cast;
       }
     );
+  }
+
+  goBack() {
+    this.modalController.dismiss();
+  }
+  saveFavorite() {
+    console.log(this.movieId, 'to favorites');
   }
 
 }
