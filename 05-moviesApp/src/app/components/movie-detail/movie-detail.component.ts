@@ -14,6 +14,7 @@ export class MovieDetailComponent implements OnInit {
   @Input() movieId: number;
   movieDetails: MovieDetails;
   movieCredits: MovieCredits;
+  overviewLimit = 150;
 
   constructor( private movieService: MoviesDataService ) { }
 
