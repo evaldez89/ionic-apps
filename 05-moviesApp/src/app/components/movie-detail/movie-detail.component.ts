@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie.interface';
 import { MoviesDataService } from 'src/app/services/movies-data.service';
 import { MovieDetails } from 'src/app/interfaces/movie.details.interface';
-import { MovieCredits } from 'src/app/interfaces/movie.credits.interface';
+import { Cast } from 'src/app/interfaces/movie.credits.interface';
 
 @Component({
   selector: 'app-movie-detail',
@@ -13,8 +13,14 @@ export class MovieDetailComponent implements OnInit {
 
   @Input() movieId: number;
   movieDetails: MovieDetails;
-  movieCredits: MovieCredits;
+  movieActors: Cast[] = [];
   overviewLimit = 150;
+
+  slidesOpt = {
+    slidesPerView: 3.3,
+    freeMode: true,
+    spaceBetween: -5
+  };
 
   constructor( private movieService: MoviesDataService ) { }
 
@@ -28,7 +34,7 @@ export class MovieDetailComponent implements OnInit {
 
     this.movieService.getMovieCredits(this.movieId).subscribe(
       resp => {
-        this.movieCredits = resp;
+        this.movieActors = resp.cast;
       }
     );
   }

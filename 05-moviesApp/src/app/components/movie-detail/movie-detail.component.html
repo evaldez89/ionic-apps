@@ -61,4 +61,20 @@
         </ion-row>
     </ion-grid>
 
+    <ion-grid>
+        <ion-row>
+            <ion-col>Actors</ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-slides [options]="slidesOpt">
+        <ion-slide *ngFor="let actor of movieActors">
+            <ion-card class="card-actor">
+                <img *ngIf="actor.profile_path" [src]="actor.profile_path | image">
+                <img *ngIf="!actor.profile_path" src="/assets/no-avatar.jpg">
+                <ion-label class="actor-name">{{ actor.name }}</ion-label>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+
 </ion-content>
