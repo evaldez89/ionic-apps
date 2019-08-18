@@ -25,18 +25,4 @@ export class SlideshowPairsComponent implements OnInit {
   nextMovies() {
     this.loadNextPage.emit();
   }
-
-  async showMovieDetail( movie: Movie ) {
-    const movieModal = await this.modalController.create({
-      component: MovieDetailComponent,
-      componentProps: {
-        movie
-      }
-    });
-
-    await movieModal.present();
-
-    return movieModal;
-  }
-
 }
