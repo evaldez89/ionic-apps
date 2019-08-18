@@ -17,21 +17,8 @@ export class SlideshowBackdropComponent implements OnInit {
     freeMode: true
   };
 
-  constructor( private modalController: ModalController ) { }
+  constructor() { }
 
   ngOnInit() {}
-
-  async showMovieDetail( movie: Movie ) {
-    const movieModal = await this.modalController.create({
-      component: MovieDetailComponent,
-      componentProps: {
-        movie
-      }
-    });
-
-    await movieModal.present();
-
-    return movieModal;
-  }
 
 }
