@@ -1,6 +1,40 @@
 <!-- <div>movie details workds {{ movieId }} </div> -->
-<ion-content>
-    <ion-label>
-        <h1></h1>
+<ion-content *ngIf="movieDetails">
+    <ion-label class="titulo">
+        <h1> {{ movieDetails.title }} </h1>
     </ion-label>
+
+    <img [src]="movieDetails.backdrop_path | image"
+        *ngIf="movieDetails.backdrop_path" />
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="4" class="poster-detalle-sobre">
+                <ion-card class="poster">
+                    <img [src]="movieDetails.poster_path | image"
+                        *ngIf="movieDetails.poster_path"
+                        class="poster">
+                </ion-card>
+            </ion-col>
+
+            <ion-col>
+                <ion-item>
+                    <ion-icon slot="start" name="thumbs-up" color="primary"></ion-icon>
+                    <ion-label>Rating</ion-label>
+                    <ion-note slot="end" color="primary">
+                        {{ movieDetails.vote_average }}
+                    </ion-note>
+                </ion-item>
+
+                <ion-item>
+                    <ion-icon slot="start" name="contacts" color="primary"></ion-icon>
+                    <ion-label>Votes</ion-label>
+                    <ion-note slot="end" color="primary">
+                        {{ movieDetails.vote_count }}
+                    </ion-note>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
 </ion-content>
