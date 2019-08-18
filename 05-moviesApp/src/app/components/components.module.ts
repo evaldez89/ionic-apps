@@ -6,6 +6,7 @@ import { SlideshowBackdropComponent } from './slideshow-backdrop/slideshow-backd
 import { SlideshowPosterComponent } from './slideshow-poster/slideshow-poster.component';
 import { SlideshowPairsComponent } from './slideshow-pairs/slideshow-pairs.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { MovieViewComponent } from './movie-view/movie-view.component';
 
 @NgModule({
   entryComponents: [
@@ -15,13 +16,15 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     SlideshowBackdropComponent,
     SlideshowPosterComponent,
     SlideshowPairsComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    MovieViewComponent
   ],
   exports: [
     SlideshowBackdropComponent,
     SlideshowPosterComponent,
     SlideshowPairsComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    MovieViewComponent
   ],
   imports: [
     CommonModule,
