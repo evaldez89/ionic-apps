@@ -1,9 +1,7 @@
 <!-- <ion-card (click)="showMovieDetail(movie)" > -->
-<ion-card>
+<ion-card (click)="showMovieDetail()">
 
-  <ion-img  [class.movie-poster]="usePoster"
-            (click)="showMovieDetail()"
-            [src]="movieImg | image"></ion-img>
+  <img [class.movie-poster]="usePoster" [src]="movieImg  | image" >
 
   <ion-card-header *ngIf="!usePoster">
     <ion-card-title> {{ movie.title }} </ion-card-title>

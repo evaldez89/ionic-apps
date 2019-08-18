@@ -19,8 +19,9 @@ export class MovieViewComponent implements OnInit {
   ngOnInit() {
     if (this.usePoster) {
       this.movieImg = this.movie.poster_path;
+    } else {
+      this.movieImg = this.movie.backdrop_path;
     }
-    this.movieImg = this.movie.backdrop_path;
   }
 
   async showMovieDetail() {
