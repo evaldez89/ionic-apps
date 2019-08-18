@@ -51,4 +51,14 @@
         </ion-row>
     </ion-grid>
 
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12">
+                <ion-chip *ngFor="let genre of movieDetails.genres" color="primary">
+                    <ion-label> {{ genre.name }} </ion-label>
+                </ion-chip>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
 </ion-content>
