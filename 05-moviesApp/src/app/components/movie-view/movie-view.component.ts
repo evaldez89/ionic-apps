@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie.interface';
 import { ModalController } from '@ionic/angular';
 import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
+import { MoviesDataService } from 'src/app/services/movies-data.service';
 
 @Component({
   selector: 'app-movie-view',
@@ -25,11 +26,12 @@ export class MovieViewComponent implements OnInit {
   }
 
   async showMovieDetail() {
-    const currentMovie = this.movie;
+
+    const currentMovie = this.movie.id;
     const movieModal = await this.modalController.create({
       component: MovieDetailComponent,
       componentProps: {
-        movie: currentMovie
+        movieId: currentMovie
       }
     });
 

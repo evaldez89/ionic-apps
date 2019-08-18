@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie.interface';
+import { MoviesDataService } from 'src/app/services/movies-data.service';
+import { MovieDetails } from 'src/app/interfaces/movie.details.interface';
+import { MovieCredits } from 'src/app/interfaces/movie.credits.interface';
 
 @Component({
   selector: 'app-movie-detail',
@@ -8,10 +11,25 @@ import { Movie } from 'src/app/interfaces/movie.interface';
 })
 export class MovieDetailComponent implements OnInit {
 
-  @Input() movie: Movie;
+  @Input() movieId: number;
+  movieDetails: MovieDetails;
+  movieCredits: MovieCredits;
 
-  constructor() { }
+  constructor( private movieService: MoviesDataService ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.movieService.getMovieDetails(this.movieId).subscribe(
+      resp => {
+        this.movieDetails = resp;
+      }
+    );
+
+    this.movieService.getMovieCredits(this.movieId).subscribe(
+      resp => {
+        this.movieCredits = resp;
+      }
+    );
+  }
 
 }
