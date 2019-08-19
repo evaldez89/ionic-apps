@@ -13,8 +13,9 @@
     <ion-list-header>
       <ion-label>Suggestions</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let suggested of suggestedMovies">
-        <ion-label color="primary">{{ suggested }}</ion-label>
+    <ion-item *ngFor="let suggested of suggestedMovies"
+              (click)="searchText = suggested">
+        <ion-label color="primary"> {{ suggested }} </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
