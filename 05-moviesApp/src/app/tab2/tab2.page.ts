@@ -7,6 +7,14 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
+  searchText = '';
+  suggestedMovies = ['Batman: El caballero de la noche', 'Click', 'Transformers']
+
   constructor() {}
+
+  searchMovie( event ) {
+    const value = event.detail.value;
+    console.log(value);
+  }
 
 }
