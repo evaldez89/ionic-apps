@@ -11,16 +11,18 @@ export class Tab2Page {
 
   searchedMovies: MovieDetails[] = [];
   searchText = '';
-  suggestedMovies = ['Batman: El caballero de la noche', 'Click', 'Transformers']
+  suggestedMovies = ['Batman: El caballero de la noche', 'Click', 'Transformers'];
 
   constructor( private movieService: MoviesDataService ) {}
 
   searchMovie( event ) {
     const searchTerm = event.detail.value;
-    this.movieService.searchMovie(searchTerm).subscribe(
-      resp => {
-        this.searchedMovies = resp.results;
-      }
-    );
+    if (searchTerm) {
+      this.movieService.searchMovie(searchTerm).subscribe(
+        resp => {
+          this.searchedMovies = resp.results;
+        }
+      );
+    }
   }
 }
