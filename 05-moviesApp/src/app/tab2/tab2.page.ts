@@ -17,10 +17,12 @@ export class Tab2Page {
 
   searchMovie( event ) {
     const searchTerm = event.detail.value;
-    this.movieService.searchMovie(searchTerm).subscribe(
-      resp => {
-        this.searchedMovies = resp.results;
-      }
-    );
+    if (searchTerm) {
+      this.movieService.searchMovie(searchTerm).subscribe(
+        resp => {
+          this.searchedMovies = resp.results;
+        }
+      );
+    }
   }
 }
