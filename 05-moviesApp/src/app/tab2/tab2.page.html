@@ -18,7 +18,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-list>
+  <ion-list *ngIf="searchedMovies.length === 0">
     <ion-list-header>
       <ion-label>Suggestions</ion-label>
     </ion-list-header>
@@ -27,4 +27,20 @@
         <ion-label color="primary"> {{ suggested }} </ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-list *ngIf="searchedMovies.length > 0">
+    <ion-list-header>
+      <ion-label>Results</ion-label>
+    </ion-list-header>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let movie of searchedMovies">
+          <app-movie-view [movie]="movie" [usePoster]="false"></app-movie-view>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  </ion-list>
+
 </ion-content>

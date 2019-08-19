@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MoviesDataService } from '../services/movies-data.service';
+import { MovieDetails } from '../interfaces/movie.details.interface';
 
 @Component({
   selector: 'app-tab2',
@@ -7,13 +9,18 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
+  searchedMovies: MovieDetails[] = [];
   searchText = '';
   suggestedMovies = ['Batman: El caballero de la noche', 'Click', 'Transformers']
 
-  constructor( ) {}
+  constructor( private movieService: MoviesDataService ) {}
 
   searchMovie( event ) {
-    const value = event.detail.value;
-    console.log(value);
+    const searchTerm = event.detail.value;
+    this.movieService.searchMovie(searchTerm).subscribe(
+      resp => {
+        this.searchedMovies = resp.results;
+      }
+    );
   }
 }
