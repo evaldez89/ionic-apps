@@ -13,7 +13,14 @@ export class LocalStorageService {
   constructor( private storage: Storage ) { }
 
   saveFavorite( movie: MovieDetails ) {
-    this.favoriteMovies.push( movie );
+    const favoriteMovie = this.favoriteMovies.find( fav => movie.id === fav.id );
+
+    if (favoriteMovie) {
+      this.favoriteMovies = this.favoriteMovies.filter( fav => fav.id !== favoriteMovie.id );
+    } else {
+      this.favoriteMovies.push( movie );
+    }
+
     this.storage.set('favoriteMovies', this.favoriteMovies);
   }
 }
