@@ -3,6 +3,7 @@ import { MoviesDataService } from 'src/app/services/movies-data.service';
 import { MovieDetails } from 'src/app/interfaces/movie.details.interface';
 import { Cast } from 'src/app/interfaces/movie.credits.interface';
 import { ModalController } from '@ionic/angular';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -23,7 +24,8 @@ export class MovieDetailComponent implements OnInit {
   };
 
   constructor( private movieService: MoviesDataService,
-               public modalController: ModalController ) { }
+               public modalController: ModalController,
+               private localStorage: LocalStorageService ) { }
 
   ngOnInit() {
 
@@ -44,7 +46,7 @@ export class MovieDetailComponent implements OnInit {
     this.modalController.dismiss();
   }
   saveFavorite() {
-    console.log(this.movieId, 'to favorites');
+    this.localStorage.saveFavorite( this.movieDetails );
   }
 
 }
