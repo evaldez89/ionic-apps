@@ -8,21 +8,28 @@ import { MovieDetails } from '../interfaces/movie.details.interface';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
   searchedMovies: MovieDetails[] = [];
   searchText = '';
-  suggestedMovies = ['Batman: El caballero de la noche', 'Click', 'Transformers'];
+  suggestedMovies = [
+    'Batman: El caballero de la noche',
+    'Click',
+    'Transformers'
+  ];
+  isSearching = false;
 
-  constructor( private movieService: MoviesDataService ) {}
+  constructor(private movieService: MoviesDataService) {}
 
-  searchMovie( event ) {
+  searchMovie(event) {
     const searchTerm = event.detail.value;
+    this.isSearching = true;
+
     if (searchTerm) {
-      this.movieService.searchMovie(searchTerm).subscribe(
-        resp => {
-          this.searchedMovies = resp.results;
-        }
-      );
+      this.movieService.searchMovie(searchTerm).subscribe(resp => {
+        this.searchedMovies = resp.results;
+        this.isSearching = false;
+      });
+    } else {
+      this.isSearching = false;
     }
   }
 }

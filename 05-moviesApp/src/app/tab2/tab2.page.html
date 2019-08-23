@@ -10,7 +10,7 @@
 
 <ion-content>
 
-  <ion-grid>
+  <ion-grid *ngIf="isSearching">
     <ion-row>
       <ion-col text-center>
         <ion-spinner name="crescent"></ion-spinner>
