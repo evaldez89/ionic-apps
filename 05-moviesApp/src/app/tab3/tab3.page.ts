@@ -25,6 +25,7 @@ export class Tab3Page {
   }
 
   groupMoviesByCategory() {
+    this.moviesByCategory = [];
     this.genres.forEach(genre => {
       this.moviesByCategory.push({
         genre: genre.name,
