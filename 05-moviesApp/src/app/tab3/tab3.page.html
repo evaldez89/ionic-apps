@@ -1,9 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <h3>Favorite Movies</h3>
+    </ion-row>
+  </ion-grid>
 
-<ion-content></ion-content>
+  <app-slideshow-poster [movies]="favoriteMovies"></app-slideshow-poster>
+
+
+</ion-content> 
