@@ -14,7 +14,8 @@
           <h4> {{ category.genre }} </h4>
         </ion-col>
       </ion-row>
-      <app-slideshow-poster [movies]="category.movies"></app-slideshow-poster>
+      <app-slideshow-poster [movies]="category.movies"
+                            (eventEmitter)="ionViewWillEnter()"></app-slideshow-poster>
     </ion-grid>
   </div>
 

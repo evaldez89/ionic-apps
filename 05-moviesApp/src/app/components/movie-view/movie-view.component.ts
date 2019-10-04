@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie.interface';
 import { ModalController } from '@ionic/angular';
 import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
-import { MoviesDataService } from 'src/app/services/movies-data.service';
 
 @Component({
   selector: 'app-movie-view',
@@ -14,6 +13,7 @@ export class MovieViewComponent implements OnInit {
   @Input() movie: Movie;
   @Input() usePoster: boolean;
   movieImg: string;
+  @Output() eventEmitter = new EventEmitter();
 
   constructor( private modalController: ModalController ) { }
 
@@ -36,6 +36,10 @@ export class MovieViewComponent implements OnInit {
     });
 
     await movieModal.present();
+
+    await movieModal.onDidDismiss().then( x => {
+      this.eventEmitter.emit();
+    });
 
     return movieModal;
   }

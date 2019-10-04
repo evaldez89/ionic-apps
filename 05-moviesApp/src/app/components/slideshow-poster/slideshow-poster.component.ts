@@ -1,24 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie.interface';
-import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
-import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-slideshow-poster',
   templateUrl: './slideshow-poster.component.html',
   styleUrls: ['./slideshow-poster.component.scss'],
 })
-export class SlideshowPosterComponent implements OnInit {
+export class SlideshowPosterComponent {
 
   @Input() movies: Movie[] = [];
+  @Output() eventEmitter = new EventEmitter();
 
   slidesOpt = {
     slidesPerView: 2.4,
     freeMode: true
   };
 
-  constructor( public modalController: ModalController ) { }
-
-  ngOnInit() {}
+  executeEmitter() {
+    this.eventEmitter.emit();
+  }
 
 }
