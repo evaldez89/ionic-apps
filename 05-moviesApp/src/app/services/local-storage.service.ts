@@ -12,12 +12,16 @@ export class LocalStorageService {
   favoriteMovies: MovieDetails[] = [];
 
   constructor( private storage: Storage,
-               private toastController: ToastController ) { }
+               private toastController: ToastController ) {
+    this.loadFavorites();
+  }
 
   async presentToast( message ) {
     const toast = await this.toastController.create({
       message,
-      duration: 1500
+      duration: 1500,
+      position: 'top',
+      translucent: true,
     });
     toast.present();
   }
@@ -35,5 +39,23 @@ export class LocalStorageService {
 
     this.storage.set('favoriteMovies', this.favoriteMovies);
     this.presentToast(message);
+
+    return (favoriteMovie) ? false : true;
   }
+
+  async loadFavorites() {
+    const movies = await this.storage.get('favoriteMovies');
+    this.favoriteMovies = movies || [];
+    return this.favoriteMovies;
+  }
+
+  async movieExist( movieId ) {
+    await this.loadFavorites();
+
+    const exists = this.favoriteMovies.find( movie => movie.id === movieId );
+
+    return (exists) ? true : false;
+
+  }
+
 }

@@ -16,6 +16,8 @@ export class MovieDetailComponent implements OnInit {
   movieDetails: MovieDetails;
   movieActors: Cast[] = [];
   overviewLimit = 150;
+  startIcon = 'star';
+  movieIsFav = false;
 
   slidesOpt = {
     slidesPerView: 3.3,
@@ -27,7 +29,9 @@ export class MovieDetailComponent implements OnInit {
                public modalController: ModalController,
                private localStorage: LocalStorageService ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    this.setFavIcon( await this.localStorage.movieExist( this.movieId ) );
 
     this.movieService.getMovieDetails(this.movieId).subscribe(
       resp => {
@@ -46,7 +50,11 @@ export class MovieDetailComponent implements OnInit {
     this.modalController.dismiss();
   }
   saveFavorite() {
-    this.localStorage.saveFavorite( this.movieDetails );
+    const saved = this.localStorage.saveFavorite( this.movieDetails );
+    this.setFavIcon(saved);
+  }
+  async setFavIcon( exist: boolean ) {
+    this.startIcon = (exist) ? 'star' : 'star-outline';
   }
 
 }
