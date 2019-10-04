@@ -5,7 +5,18 @@
     </ion-row>
   </ion-grid>
 
-  <app-slideshow-poster [movies]="favoriteMovies"></app-slideshow-poster>
+  
+  <div *ngFor="let category of moviesByCategory">
+    
+    <ion-grid *ngIf="category.movies.length > 0">
+      <ion-row>
+        <ion-col>
+          <h4> {{ category.genre }} </h4>
+        </ion-col>
+      </ion-row>
+      <app-slideshow-poster [movies]="category.movies"></app-slideshow-poster>
+    </ion-grid>
+  </div>
 
 
 </ion-content> 
