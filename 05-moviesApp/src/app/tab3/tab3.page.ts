@@ -8,7 +8,7 @@ import { MoviesDataService } from '../services/movies-data.service';
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
-export class Tab3Page implements OnInit {
+export class Tab3Page {
 
   favoriteMovies: MovieDetails[] = [];
   genres: Genre[] = [];
@@ -17,10 +17,10 @@ export class Tab3Page implements OnInit {
   constructor( private localData: LocalStorageService,
                private movieService: MoviesDataService ) {}
 
-  async ngOnInit() {
+
+  async ionViewWillEnter() {
     this.favoriteMovies = await this.localData.loadFavorites();
     this.genres = await this.movieService.loadGenres();
-
     this.groupMoviesByCategory();
   }
 
