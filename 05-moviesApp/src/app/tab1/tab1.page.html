@@ -9,7 +9,7 @@
     </ion-row>
   </ion-grid>
 
-  <app-slideshow-backdrop [movies]="recentMovies"></app-slideshow-backdrop>
+  <app-slideshow-backdrop [movies]="recentMovies | hasProp: 'backdrop_path'"></app-slideshow-backdrop>
 
   <ion-grid fixed>
 
