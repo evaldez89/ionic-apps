@@ -20,7 +20,7 @@ export class Tab1Page {
   }
 
   ionViewWillEnter() {
-
+    this.scanCode();
   }
 
   ionViewDidLeave() {
