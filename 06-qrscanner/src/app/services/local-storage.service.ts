@@ -10,14 +10,16 @@ export class LocalStorageService {
   savedLogScans: LogScans[] = [];
 
   constructor( private storage: Storage ) {
-    this.storage.get('scanLogs').then( res => {
-      this.savedLogScans = (res) ? res : [];
-    }).catch(err => {
-      console.log(err);
-    });
+    this.loadStorage();
   }
 
-  saveLogScan( format: string, text: string ) {
+  async loadStorage() {
+    this.savedLogScans = await this.storage.get('scanLogs') || [];
+  }
+
+  async saveLogScan( format: string, text: string ) {
+    await this.loadStorage();
+
     const newScan = new LogScans(format, text);
 
     this.savedLogScans.unshift( newScan );
