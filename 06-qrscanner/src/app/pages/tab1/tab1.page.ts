@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-tab1',
@@ -13,7 +14,8 @@ export class Tab1Page {
     allowSlideNext: false,
   };
 
-  constructor( private barcodeScanner: BarcodeScanner ) {}
+  constructor( private barcodeScanner: BarcodeScanner,
+               private localStorage: LocalStorageService ) {}
 
   ionViewDidEnter() {
 
@@ -33,7 +35,11 @@ export class Tab1Page {
 
   scanCode() {
     this.barcodeScanner.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData);
+
+      if (!barcodeData.cancelled) {
+        this.localStorage.saveLogScan(barcodeData.format, barcodeData.text);
+      }
+
      }).catch(err => {
          console.log('Error', err);
      });
