@@ -14,10 +14,12 @@
 
     <ion-list>
         <ion-item *ngFor="let logScan of localStorage.savedLogScans" detail>
-            <ion-icon slot="start" [name]="logScan.icon"></ion-icon>
+            <ion-icon slot="start" 
+                      color="primary"
+                      [name]="logScan.icon"></ion-icon>
             <ion-label>
                 <h2> {{ logScan.text }} </h2>
-                <p> {{ logScan.created }} </p>
+                <p> {{ logScan.created | date: 'medium' }} </p>
             </ion-label>
         </ion-item>
     </ion-list>
