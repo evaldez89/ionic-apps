@@ -16,7 +16,7 @@ export class Tab2Page {
   }
 
   openScannedData( logScan: LogScans ) {
-    this.localStorage.openScannedValue(logScan);
+    this.localStorage.openScanLog(logScan);
   }
 
 }

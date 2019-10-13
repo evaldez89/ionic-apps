@@ -37,11 +37,12 @@ export class Tab1Page {
     this.barcodeScanner.scan().then(barcodeData => {
 
       if (!barcodeData.cancelled) {
-        this.localStorage.saveLogScan(barcodeData.format, barcodeData.text);
+        this.localStorage.saveScanLog(barcodeData.format, barcodeData.text);
       }
 
      }).catch(err => {
-        console.log('Error', err);
+        this.localStorage.saveScanLog('geo:', 'geo:40.752327640569696,-74.34377088984377');
+        console.log(err);
      });
   }
 
