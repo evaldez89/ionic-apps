@@ -30,8 +30,5 @@ export class LogScans {
                 this.icon = 'create';
                 break;
         }
-
-
-        this.type = '';
     }
 }
