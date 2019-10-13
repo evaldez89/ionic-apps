@@ -21,7 +21,7 @@ export class LocalStorageService {
     this.savedLogScans = await this.storage.get('scanLogs') || [];
   }
 
-  async saveLogScan( format: string, text: string ) {
+  async saveScanLog( format: string, text: string ) {
     await this.loadStorage();
 
     const newScan = new LogScans(format, text);
@@ -30,23 +30,22 @@ export class LocalStorageService {
 
     this.storage.set('scanLogs', this.savedLogScans);
 
-    this.openScannedValue(newScan);
+    this.navCtrl.navigateForward('/tabs/tab2');
 
-    this.iab.create(newScan.text, '_system');
+    this.openScanLog(newScan);
+
   }
 
-  openScannedValue( scan: LogScans ) {
-    this.navCtrl.navigateForward('/tabs/tab2');
-    console.log('the type: ', scan.type);
-    switch (scan.type) {
+  openScanLog( scanLog: LogScans ) {
+    switch (scanLog.type) {
       case 'http':
-        this.iab.create(scan.text, '_system');
+        this.iab.create(scanLog.text, '_system');
         break;
-      // case 'globe':
-      //   this.openValue(scan.type);
-      //   break;
+      case 'geo':
+        this.navCtrl.navigateForward(`/tabs/tab2/map/${ scanLog.text }`);
+        break;
       default:
-        this.iab.create(scan.text, '_system');
+        // this.iab.create(scanLog.text, '_system');
         break;
     }
   }
