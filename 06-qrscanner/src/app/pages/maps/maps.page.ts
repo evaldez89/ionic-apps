@@ -16,8 +16,11 @@ export class MapsPage implements OnInit {
   ngOnInit() {
     let geo = this.route.snapshot.paramMap.get('geo');
     geo = geo.substr(4);
-    this.latitude = Number(geo.split(',')[0]);
-    this.longitud = Number(geo.split(',')[1]);
+    const args = geo.split(',');
+    this.latitude = Number(args[0]);
+    this.longitud = Number(args[1]);
   }
 
 }
+
+// pk.eyJ1IjoiZXZhbGRlejg5IiwiYSI6ImNrMXBmeGs2MTA4NWQzbW82MzZkYmgxOTQifQ.V4eMf-oP_P88WfPZ2FblaQ
