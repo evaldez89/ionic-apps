@@ -40,7 +40,14 @@ export class MapsPage implements OnInit, AfterViewInit {
 
     map.addControl(new mapboxgl.NavigationControl());
 
-    map.on('load', function() {
+    map.on('load', () => {
+
+      map.resize();
+
+      const marker = new mapboxgl.Marker({
+        draggable: false
+      }).setLngLat([this.longitud, this.latitude]).addTo(map);
+
       // Insert the layer beneath any symbol layer.
       const layers = map.getStyle().layers;
 
