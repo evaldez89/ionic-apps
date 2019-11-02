@@ -8,14 +8,13 @@ declare var mapboxgl: any;
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.page.html',
-  styleUrls: ['./maps.page.scss'],
+  styleUrls: ['./maps.page.scss']
 })
 export class MapsPage implements OnInit, AfterViewInit {
-
   latitude: number;
   longitud: number;
 
-  constructor( private route: ActivatedRoute ) { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     let geo = this.route.snapshot.paramMap.get('geo');
@@ -26,16 +25,19 @@ export class MapsPage implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZXZhbGRlejg5IiwiYSI6ImNrMXBmeGs2MTA4NWQzbW82MzZkYmgxOTQifQ.V4eMf-oP_P88WfPZ2FblaQ';
+    mapboxgl.accessToken =
+      'pk.eyJ1IjoiZXZhbGRlejg5IiwiYSI6ImNrMXBmeGs2MTA4NWQzbW82MzZkYmgxOTQifQ.V4eMf-oP_P88WfPZ2FblaQ';
 
     const map = new mapboxgl.Map({
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [this.longitud, this.latitude],
+      zoom: 15.5,
+      pitch: 45,
+      bearing: -17.6,
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11'
+      antialias: true
     });
 
     map.addControl(new mapboxgl.NavigationControl());
   }
-
 }
-
-// pk.eyJ1IjoiZXZhbGRlejg5IiwiYSI6ImNrMXBmeGs2MTA4NWQzbW82MzZkYmgxOTQifQ.V4eMf-oP_P88WfPZ2FblaQ
