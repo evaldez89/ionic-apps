@@ -12,7 +12,7 @@ export class Tab2Page {
   constructor( public localStorage: LocalStorageService ) { }
 
   sendByEmail() {
-
+    this.localStorage.sendEmail();
   }
 
   openScannedData( logScan: LogScans ) {
