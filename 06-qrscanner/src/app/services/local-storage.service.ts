@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,19 @@ export class LocalStorageService {
   constructor( private storage: Storage,
                private navCtrl: NavController,
                private iab: InAppBrowser,
-               private file: File ) {
+               private file: File,
+               private toastController: ToastController ) {
     this.loadStorage();
+  }
+
+  async presentToast( message ) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 1500,
+      position: 'top',
+      translucent: true,
+    });
+    toast.present();
   }
 
   async loadStorage() {
@@ -69,9 +81,9 @@ export class LocalStorageService {
     await this.file.createFile(this.file.dataDirectory, 'scanned_records.csv', true)
       .then( created => {
         this.file.writeExistingFile(this.file.dataDirectory, 'scanned_records.csv', data)
-          .then( writed => { console.log('data writed to file'); })
-          .catch( error => { console.log('could not create file. ', error); });
+          .then( writed => { this.presentToast('data writed to file'); })
+          .catch( error => { this.presentToast(`could not create file. \n\n${error}`); });
       })
-      .catch( error => { console.log('could not create file. ', error); });
+      .catch( error => { this.presentToast(`could not create file.\n\n${error}`); });
   }
 }
