@@ -5,6 +5,7 @@ import { NavController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { ToastController } from '@ionic/angular';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -17,18 +18,8 @@ export class LocalStorageService {
                private navCtrl: NavController,
                private iab: InAppBrowser,
                private file: File,
-               private toastController: ToastController ) {
+               private emailComposer: EmailComposer ) {
     this.loadStorage();
-  }
-
-  async presentToast( message ) {
-    const toast = await this.toastController.create({
-      message,
-      duration: 1500,
-      position: 'top',
-      translucent: true,
-    });
-    toast.present();
   }
 
   async loadStorage() {
@@ -52,19 +43,16 @@ export class LocalStorageService {
 
   openScanLog( scanLog: LogScans ) {
     switch (scanLog.type) {
-      case 'http':
-        this.iab.create(scanLog.text, '_system');
-        break;
       case 'geo':
         this.navCtrl.navigateForward(`/tabs/tab2/map/${ scanLog.text }`);
         break;
       default:
-        // this.iab.create(scanLog.text, '_system');
+        this.iab.create(scanLog.text, '_system');
         break;
     }
   }
 
-  sendEmail() {
+  async sendEmail() {
     const lines = [];
 
     lines.push('Tipo,Formato,Fecha Creación,Texto\n');
@@ -74,16 +62,32 @@ export class LocalStorageService {
       lines.push(line);
     });
 
-    this.createFile(lines.join(''));
+    if (this.createFile(lines.join(''))) {
+      const email = {
+        to: 'evaldez.cnt@gmail.com',
+        attachments: [
+          `${this.file.dataDirectory}scanned_records.csv`
+        ],
+        subject: 'Scanned Records',
+        body: 'This is the scanned records from your app.',
+        isHtml: true
+      };
+
+      this.emailComposer.open(email);
+    }
   }
 
   async createFile(data: string) {
+    let result = false;
+
     await this.file.createFile(this.file.dataDirectory, 'scanned_records.csv', true)
       .then( created => {
         this.file.writeExistingFile(this.file.dataDirectory, 'scanned_records.csv', data)
-          .then( writed => { this.presentToast('data writed to file'); })
-          .catch( error => { this.presentToast(`could not create file. \n\n${error}`); });
+          .then( writed => { result = true; })
+          .catch( error => { console.log(error); });
       })
-      .catch( error => { this.presentToast(`could not create file.\n\n${error}`); });
+      .catch( error => { console.log(error); });
+
+    return result;
   }
 }
