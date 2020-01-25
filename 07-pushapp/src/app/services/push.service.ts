@@ -9,6 +9,7 @@ export class PushService {
 
   messages: OSNotificationPayload[] = [];
   pushEmit = new EventEmitter<OSNotificationPayload>();
+  userId: string;
 
   constructor( private oneSignal: OneSignal,
                private storage: Storage ) {
@@ -28,6 +29,11 @@ export class PushService {
     this.oneSignal.handleNotificationOpened().subscribe( async(notification) => {
       console.log('notification opened: ', notification);
       await this.notificationReceived(notification.notification);
+    });
+
+    this.oneSignal.getIds().then(info => {
+      console.log(info)
+      this.userId = info.userId;
     });
 
     this.oneSignal.endInit();
