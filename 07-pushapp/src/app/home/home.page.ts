@@ -28,4 +28,9 @@ export class HomePage implements OnInit {
     console.log(this.messages[0].additionalData)
   }
 
+  async clearMessages(){
+    await this.pushService.clearMessages();
+    this.messages = [];
+  }
+
 }

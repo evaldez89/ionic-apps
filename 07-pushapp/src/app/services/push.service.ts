@@ -67,4 +67,10 @@ export class PushService {
   async getMessages(){
     return [...await this.loadMessages()];
   }
+
+  async clearMessages() {
+    await this.storage.remove('messages');
+    this.messages = [];
+    await this.saveMessages();
+  }
 }
