@@ -12,9 +12,7 @@ import { LocalDataService } from 'src/app/services/local-data.service';
 })
 export class ArticleNewsComponent implements OnInit {
 
-  @Input() newsArticle: Article;
-  @Input() newsIndex: number;
-  @Input() inFavorite;
+ 
 
   constructor( private iab: InAppBrowser,
                private actionSheetCtrl: ActionSheetController,
