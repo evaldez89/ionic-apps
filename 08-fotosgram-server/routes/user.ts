@@ -1,12 +1,30 @@
 import { Router, Request, Response } from "express";
+import { User } from "../models/user.model";
 
 const userRoutes = Router();
 
-userRoutes.get('/test', (req: Request, res: Response) => {
-    res.json({
-        ok: true,
-        result: 'Hola mundo'
-    });
-})
+userRoutes.post('/create', (req: Request, res: Response) => {
+    const user  = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        avatar: req.body.avatar || null
+    }
+
+    User.create(user).then(createdUser => {
+        res.json({
+            status: {code: 0, msj: 'ok'},
+            user: createdUser
+        });
+    }).catch(error => {
+        res.json({
+            // status: {code: error, msj: error}
+            status: {
+                code: error.code,
+                msj: `[${error.name}] - ${error.errmsg}`
+            }
+        });
+     });
+});
 
 export default userRoutes;
