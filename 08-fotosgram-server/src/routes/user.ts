@@ -8,7 +8,7 @@ userRoutes.post('/create', (req: Request, res: Response) => {
     const user  = {
         name: req.body.name,
         email: req.body.email,
-        password: bcryp.hash( req.body.password, 10),
+        password: bcryp.hashSync(req.body.password, 10),
         avatar: req.body.avatar || null
     }
 
