@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "tsc-watch --onSuccess \"npm run dev\" --compiler /home/evaldez/.nvm/versions/node/v12.13.1/bin/tsc",
+    "dev": "nodemon ./dist"
   },
   "author": "evaldez89@gmail.com",
   "license": "ISC",
