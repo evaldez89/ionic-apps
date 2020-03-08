@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import { User } from "../models/user.model";
 import bcryp from 'bcrypt';
+import Token from "../classes/token";
 
 const userRoutes = Router();
 
@@ -42,7 +43,8 @@ userRoutes.post('/create', (req: Request, res: Response) => {
     User.create(user).then(createdUser => {
         res.json({
             status: {code: 0, msj: 'ok'},
-            user: createdUser
+            user: createdUser,
+            token: Token.getToken(createdUser)
         });
     }).catch(error => {
         res.json({
