@@ -4,6 +4,33 @@ import bcryp from 'bcrypt';
 
 const userRoutes = Router();
 
+userRoutes.post('/login', (req: Request, res: Response) => {
+    const body = req.body;
+
+    User.findOne({ email: body.email }, (error, user) => {
+        if (error) throw error;
+
+        let status = {
+            code: 99,
+            msj: 'Invalid Login',
+            token: ''
+        }
+
+        if (user) {
+            if (user.isValidPassword(body.password)) {
+                status = {
+                    code: 99,
+                    msj: `${user.name}`,
+                    token: Token.getToken(user)
+                }
+            } else { status.msj += '****'; }
+        }
+
+        return res.json({status});
+    });
+
+});
+
 userRoutes.post('/create', (req: Request, res: Response) => {
     const user  = {
         name: req.body.name,
