@@ -1,0 +1,19 @@
+import { Response, NextFunction } from "express";
+import Token from "../classes/token";
+
+
+export const tokenVerification = (req: any, res: Response, next: NextFunction) => {
+    const userToken = req.get('x-token') || '';
+
+    Token.verifyToken(userToken)
+    .then( (decoded: any) => {
+        req.user = decoded.user;
+        next();
+    })
+    .catch(error => {
+        res.json({
+            code: 99,
+            message: 'Invalid Token'
+        })
+    });
+};
