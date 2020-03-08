@@ -26,7 +26,7 @@ userSchema.method('isValidPassword', function(password: string): boolean {
     return bcrypt.compareSync(password, this.password);
 });
 
-interface IUser extends Document {
+export interface IUser extends Document {
     name: string;
     email: string;
     password: string;

@@ -1,7 +1,17 @@
 import { Router, Request, Response } from "express";
-import { User } from "../models/user.model";
+import { User, IUser } from "../models/user.model";
 import bcryp from 'bcrypt';
 import Token from "../classes/token";
+
+
+const getUserToken = (user: IUser): string => {
+    return Token.getToken({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar
+    });
+}
 
 const userRoutes = Router();
 
@@ -18,13 +28,15 @@ userRoutes.post('/login', (req: Request, res: Response) => {
         }
 
         if (user) {
+            const userToken = getUserToken(user);
+
             if (user.isValidPassword(body.password)) {
                 status = {
-                    code: 99,
+                    code: 0,
                     msj: `${user.name}`,
-                    token: Token.getToken(user)
+                    token: userToken
                 }
-            } else { status.msj += '****'; }
+            } else { status.msj += '****'; }  // Remove this, is just to know when de password is invalid
         }
 
         return res.json({status});
@@ -41,10 +53,11 @@ userRoutes.post('/create', (req: Request, res: Response) => {
     }
 
     User.create(user).then(createdUser => {
+        const userToken = getUserToken(createdUser);
         res.json({
             status: {code: 0, msj: 'ok'},
-            user: createdUser,
-            token: Token.getToken(createdUser)
+            user: createdUser.name,
+            token: userToken
         });
     }).catch(error => {
         res.json({
