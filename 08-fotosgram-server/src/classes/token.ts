@@ -15,7 +15,7 @@ export default class Token {
                 if (error) {
                     reject();
                 } else {
-                    resolve();
+                    resolve( decode );
                 }
             });
         });
