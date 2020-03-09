@@ -7,7 +7,7 @@ import { urlencoded, json } from 'body-parser';
 const server = new Server();
 
 mongoose.connect('mongodb://localhost:27017/fotosgram',
-                 { useNewUrlParser: true, useCreateIndex: true },
+                 { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
                  (error) => {
                      if (error) throw error;
 

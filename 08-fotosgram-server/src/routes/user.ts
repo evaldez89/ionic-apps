@@ -2,6 +2,7 @@ import { Router, Request, Response } from "express";
 import { User, IUser } from "../models/user.model";
 import bcryp from 'bcrypt';
 import Token from "../classes/token";
+import { tokenVerification } from "../middleware/authtentication";
 
 
 const getUserToken = (user: IUser): string => {
@@ -68,6 +69,34 @@ userRoutes.post('/create', (req: Request, res: Response) => {
             }
         });
      });
+});
+
+userRoutes.post('/update', tokenVerification, (req: any, res: Response) => {
+
+    const user = {
+        name: req.body.name || req.user.name,
+        email: req.body.email || req.user.email,
+        avatar: req.body.avatar || req.user.avatar
+    }
+
+    User.findByIdAndUpdate(req.user._id, user, { new: true }, (error, DbUser) => {
+        if (error) throw error;
+
+        if (DbUser) {
+            const userToken = getUserToken(DbUser);
+
+            return res.json({
+                code: 0,
+                msj: DbUser.name,
+                token: userToken
+             });
+        }
+
+        return res.json({
+            code: 0,
+            msj: 'User not found'
+        });
+    });
 });
 
 export default userRoutes;
