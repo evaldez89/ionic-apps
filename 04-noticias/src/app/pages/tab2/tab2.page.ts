@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { IonSegment, IonInfiniteScroll } from '@ionic/angular';
 import { NoticiasService } from 'src/app/services/noticias.service';
 import { Article } from 'src/app/interfaces/news.interface';
@@ -8,7 +8,7 @@ import { Article } from 'src/app/interfaces/news.interface';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page implements OnInit {
+export class Tab2Page implements AfterViewInit {
   categories = [
     'sports',
     'business',
@@ -25,8 +25,7 @@ export class Tab2Page implements OnInit {
 
   constructor(private newsService: NoticiasService) {}
 
-  ngOnInit() {
-    this.categoriesSegment.value = this.categories[0];
+  ngAfterViewInit() {
     this.loadCategoryChange();
   }
 
@@ -42,7 +41,7 @@ export class Tab2Page implements OnInit {
 
   loadNewsData(event?) {
     this.newsService
-      .getHeadLinesByCategory(this.categoriesSegment.value)
+      .getHeadLinesByCategory(this.categoriesSegment.value || this.categories[0])
       .subscribe(resp => {
         if (resp.articles.length > 0) {
           this.newsArticles.push(...resp.articles);
