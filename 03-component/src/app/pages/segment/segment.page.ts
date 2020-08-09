@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class SegmentPage implements OnInit {
 
-  @ViewChild(IonSegment) segments: IonSegment;
+  @ViewChild(IonSegment, { static: true }) segments: IonSegment;
   heroes: Observable<Hero[]>;
   segmentFilter = '';
 

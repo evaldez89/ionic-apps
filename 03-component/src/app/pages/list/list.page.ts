@@ -12,7 +12,7 @@ export class ListPage implements OnInit {
 
   userList: Observable<any>;
 
-  @ViewChild('contactList') contactList: IonList;
+  @ViewChild('contactList', { static: true }) contactList: IonList;
 
   constructor( private dataService: DataService,
                private toastCtrl: ToastController ) { }

@@ -10,7 +10,7 @@ export class InfiniteScrolPage implements OnInit {
 
   data: any[] = Array(20);
 
-  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonInfiniteScroll, { static: true }) infiniteScroll: IonInfiniteScroll;
 
   constructor() { }
 
